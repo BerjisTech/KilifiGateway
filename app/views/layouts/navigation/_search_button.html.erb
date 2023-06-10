@@ -1,0 +1,19 @@
+<%# Floating search icon that when clicked brings into view a search bar with service dropdown, category dropdown and a text input for search %>
+<div class="search-button">
+  <div class="search-button__icon">
+    <i class="fa fa-search"></i>
+  </div>
+  <div class="search-button__search-bar">
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <div class="form-floating">
+        <%= f.label :term, 'Search Term', class: "form-control", placeholder: "Placeholder" %>
+        <%= f.text_field :term %>
+      </div>
+      <div class="form-floating">
+        <%= f.select :category, @search_categories, prompt: 'Select Category', class: "form-control", placeholder: "Placeholder" %>
+        <%= f.label :category, 'Category' %>
+      </div>
+      <%= f.submit 'Search' %>
+    <% end %>
+  </div>
+</div>

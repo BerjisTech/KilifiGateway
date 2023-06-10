@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateGovernmentFacilities < ActiveRecord::Migration[7.0]
   def change
     create_table :government_facilities, id: :uuid do |t|

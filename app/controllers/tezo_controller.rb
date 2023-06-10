@@ -1,4 +1,5 @@
+# frozen_string_literal: true
+
 class TezoController < ApplicationController
-  def center
-  end
+  def center; end
 end

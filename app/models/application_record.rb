@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
 class ApplicationRecord < ActiveRecord::Base
   primary_abstract_class
+  self.abstract_class = true
+  default_scope -> { order(created_at: :desc) }
 end
