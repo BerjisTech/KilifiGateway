@@ -1,8 +1,11 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
     content: [
+        './public/*.html',
         './app/helpers/**/*.rb',
         './app/javascript/**/*.js',
-        './app/views/**/*',
+        './app/views/**/*.{erb,haml,html,slim}'
     ],
     darkMode: 'class',
     theme: {
@@ -11,6 +14,9 @@ module.exports = {
             body: ['Open Sans', 'sans-serif'],
         },
         extend: {
+            fontFamily: {
+                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+            },
             fontSize: {
                 14: '14px',
             },
@@ -56,5 +62,10 @@ module.exports = {
             '2xl': '1536px',
         }
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/typography'),
+        require('@tailwindcss/container-queries'),
+    ]
 };
