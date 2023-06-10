@@ -1,0 +1,2 @@
+class GovernmentFacility < ApplicationRecord
+end
