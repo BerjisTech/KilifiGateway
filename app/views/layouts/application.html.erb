@@ -10,12 +10,12 @@
     <%# SEO %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "application.tailwind", "data-turbolinks-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbolinks-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbolinks-track": "reload" %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="w-full h-full bg-slate-950">
+  <body class="bg-slate-300">
     <%= yield %>
   </body>
 </html>
