@@ -25,7 +25,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'tezo#center'
-
-  # SEARCH
-  get 'search', controller: 'commons', action: 'search'
 end
