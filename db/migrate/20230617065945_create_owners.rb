@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateOwners < ActiveRecord::Migration[7.0]
   def change
     create_table :owners, id: :uuid do |t|

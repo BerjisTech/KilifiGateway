@@ -1,6 +1,23 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :searches
+  resources :government_facilities
+  resources :accepted_currencies
+  resources :transactions
+  resources :on_demand_services
+  resources :service_variants
+  resources :services
+  resources :product_variants
+  resources :branches
+  resources :products
+  resources :store_contacts
+  resources :staffs
+  resources :stores
+  resources :accomodations
+  resources :service_providers
+  resources :wallets
+  resources :owners
   get 'commons/search'
   get 'tezo/center'
   devise_for :users
