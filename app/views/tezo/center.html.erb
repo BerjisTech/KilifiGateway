@@ -1,2 +1,16 @@
-<div>
+<div class="block w-screen h-screen bg-no-repeat bg-cover bg-opacity-50 bg-center bg-fixed bg-hero-pattern d-flex align-items-start justify-content-center gap-3 flex-column">
+  <div class="text-[40px] fw-bolder text-slate-800">All Your Needs In One Place</div>
+  <%= form_with(model: Search.new, class: "contents d-flex align-items-center justify-content-start bg-green-600") do |form| %>
+    <div class="form-floating my-5">
+      <%= form.text_field :term, class: "rounded-none bg-transparent border-0 form-control", placeholder: 'Search within Kilifi' %>
+      <%= form.label :term, 'Search Anything here', class: 'bg-transparent' %>
+    </div>
+    <div class="form-floating my-5">
+      <%= form.select :category, @search_categories, {}, class: "rounded-none bg-transparent border-0 form-select", 'aria-label': 'Service Category' %>
+      <%= form.label :category, class: 'bg-transparent' %>
+    </div>
+    <div class="inline bg-green-800 h-full d-flex align-items-center justify-content-center">
+      <%= form.submit class: "rounded-lg py-3 px-5 bg-[#2B4506] text-white inline-block font-medium cursor-pointer" %>
+    </div>
+  <% end %>
 </div>

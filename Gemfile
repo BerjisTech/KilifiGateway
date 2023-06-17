@@ -80,3 +80,5 @@ gem 'devise', '~> 4.9'
 gem 'sassc-rails', '~> 2.1'
 
 gem 'tailwindcss-rails', '~> 2.0'
+
+gem "hotwire-livereload", "~> 1.2", :group => :development

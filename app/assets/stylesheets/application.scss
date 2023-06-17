@@ -13,4 +13,22 @@
  *= require_tree .
  *= require_self
  */
- @import "../../../node_modules/bootstrap/scss/bootstrap";
+
+.form-floating > .form-control:focus ~ label::after,
+.form-floating > .form-control:not(:placeholder-shown) ~ label::after,
+.form-floating > .form-control-plaintext ~ label::after,
+.form-floating > .form-select ~ label::after {
+  background-color: transparent !important;
+}
+input,
+textarea,
+select,
+button {
+  outline: none !important;
+  box-shadow: none !important;
+  &:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+@import "../../../node_modules/bootstrap/scss/bootstrap";

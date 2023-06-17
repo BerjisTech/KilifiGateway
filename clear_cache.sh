@@ -15,8 +15,5 @@ bundle exec rake assets:clean
 echo "Precompiling assets..."
 bundle exec rake assets:precompile
 
-echo "Stopping Rails server..."
-kill -9 $(cat tmp/pids/server.pid)
-
 echo "Start Rails server..."
-bundle exec rails s
+bundle exec rails restart

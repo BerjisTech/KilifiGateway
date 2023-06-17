@@ -17,6 +17,10 @@ module KilifiGateway
       env.cache = ActiveSupport::Cache.lookup_store(:null_store)
     end    
 
+    config.public_file_server.headers = {
+      'Cache-Control' => "no-cache"
+    }
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
