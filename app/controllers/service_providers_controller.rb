@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ServiceProvidersController < ApplicationController
-  before_action :set_service_provider, only: %i[ show edit update destroy ]
+  before_action :set_service_provider, only: %i[show edit update destroy]
 
   # GET /service_providers or /service_providers.json
   def index
@@ -7,8 +9,7 @@ class ServiceProvidersController < ApplicationController
   end
 
   # GET /service_providers/1 or /service_providers/1.json
-  def show
-  end
+  def show; end
 
   # GET /service_providers/new
   def new
@@ -16,8 +17,7 @@ class ServiceProvidersController < ApplicationController
   end
 
   # GET /service_providers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /service_providers or /service_providers.json
   def create
@@ -25,7 +25,9 @@ class ServiceProvidersController < ApplicationController
 
     respond_to do |format|
       if @service_provider.save
-        format.html { redirect_to service_provider_url(@service_provider), notice: "Service provider was successfully created." }
+        format.html do
+          redirect_to service_provider_url(@service_provider), notice: 'Service provider was successfully created.'
+        end
         format.json { render :show, status: :created, location: @service_provider }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,9 @@ class ServiceProvidersController < ApplicationController
   def update
     respond_to do |format|
       if @service_provider.update(service_provider_params)
-        format.html { redirect_to service_provider_url(@service_provider), notice: "Service provider was successfully updated." }
+        format.html do
+          redirect_to service_provider_url(@service_provider), notice: 'Service provider was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @service_provider }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +56,20 @@ class ServiceProvidersController < ApplicationController
     @service_provider.destroy
 
     respond_to do |format|
-      format.html { redirect_to service_providers_url, notice: "Service provider was successfully destroyed." }
+      format.html { redirect_to service_providers_url, notice: 'Service provider was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_service_provider
-      @service_provider = ServiceProvider.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def service_provider_params
-      params.require(:service_provider).permit(:user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_service_provider
+    @service_provider = ServiceProvider.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def service_provider_params
+    params.require(:service_provider).permit(:user_id)
+  end
 end

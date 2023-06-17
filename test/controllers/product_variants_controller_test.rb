@@ -1,45 +1,51 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class ProductVariantsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @product_variant = product_variants(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get product_variants_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_product_variant_url
     assert_response :success
   end
 
-  test "should create product_variant" do
-    assert_difference("ProductVariant.count") do
-      post product_variants_url, params: { product_variant: { description: @product_variant.description, name: @product_variant.name, product_id: @product_variant.product_id } }
+  test 'should create product_variant' do
+    assert_difference('ProductVariant.count') do
+      post product_variants_url,
+           params: { product_variant: { description: @product_variant.description, name: @product_variant.name,
+                                        product_id: @product_variant.product_id } }
     end
 
     assert_redirected_to product_variant_url(ProductVariant.last)
   end
 
-  test "should show product_variant" do
+  test 'should show product_variant' do
     get product_variant_url(@product_variant)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_product_variant_url(@product_variant)
     assert_response :success
   end
 
-  test "should update product_variant" do
-    patch product_variant_url(@product_variant), params: { product_variant: { description: @product_variant.description, name: @product_variant.name, product_id: @product_variant.product_id } }
+  test 'should update product_variant' do
+    patch product_variant_url(@product_variant),
+          params: { product_variant: { description: @product_variant.description, name: @product_variant.name,
+                                       product_id: @product_variant.product_id } }
     assert_redirected_to product_variant_url(@product_variant)
   end
 
-  test "should destroy product_variant" do
-    assert_difference("ProductVariant.count", -1) do
+  test 'should destroy product_variant' do
+    assert_difference('ProductVariant.count', -1) do
       delete product_variant_url(@product_variant)
     end
 

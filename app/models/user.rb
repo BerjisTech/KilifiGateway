@@ -5,4 +5,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  class << self
+    def fake_records
+      10.times do
+        User.create(
+          email: Faker::Internet.email,
+          password: Faker::Internet.password
+        )
+      end
+    end
+  end
 end

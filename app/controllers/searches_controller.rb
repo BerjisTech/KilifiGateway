@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class SearchesController < ApplicationController
-  before_action :set_search, only: %i[ show edit update destroy ]
+  before_action :set_search, only: %i[show edit update destroy]
 
   # GET /searches or /searches.json
   def index
@@ -7,8 +9,7 @@ class SearchesController < ApplicationController
   end
 
   # GET /searches/1 or /searches/1.json
-  def show
-  end
+  def show; end
 
   # GET /searches/new
   def new
@@ -16,8 +17,7 @@ class SearchesController < ApplicationController
   end
 
   # GET /searches/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /searches or /searches.json
   def create
@@ -25,7 +25,7 @@ class SearchesController < ApplicationController
 
     respond_to do |format|
       if @search.save
-        format.html { redirect_to search_url(@search), notice: "Search was successfully created." }
+        format.html { redirect_to search_url(@search), notice: 'Search was successfully created.' }
         format.json { render :show, status: :created, location: @search }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class SearchesController < ApplicationController
   def update
     respond_to do |format|
       if @search.update(search_params)
-        format.html { redirect_to search_url(@search), notice: "Search was successfully updated." }
+        format.html { redirect_to search_url(@search), notice: 'Search was successfully updated.' }
         format.json { render :show, status: :ok, location: @search }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class SearchesController < ApplicationController
     @search.destroy
 
     respond_to do |format|
-      format.html { redirect_to searches_url, notice: "Search was successfully destroyed." }
+      format.html { redirect_to searches_url, notice: 'Search was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_search
-      @search = Search.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def search_params
-      params.require(:search).permit(:term, :category, :user_id, :ip, :location, :referer)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_search
+    @search = Search.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def search_params
+    params.require(:search).permit(:term, :category, :user_id, :ip, :location, :referer)
+  end
 end
