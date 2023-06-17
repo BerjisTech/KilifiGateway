@@ -11,9 +11,8 @@ class Branch < ApplicationRecord
     def fake_records
       10.times do
         Branch.create(
-          name: Faker::Company.name,
-          description: Faker::Company.catch_phrase,
-          store_id: Store.all.sample.id
+          store_id: Store.all.sample.id,
+          location: Faker::Address.full_address
         )
       end
     end

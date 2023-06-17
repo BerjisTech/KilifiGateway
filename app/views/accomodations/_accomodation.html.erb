@@ -1,37 +1,37 @@
 <div id="<%= dom_id accomodation %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Owner:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Owner:</strong>
     <%= accomodation.owner_id %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Description:</strong>
     <%= accomodation.description %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Bathrooms:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Bathrooms:</strong>
     <%= accomodation.bathrooms %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Bedrooms:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Bedrooms:</strong>
     <%= accomodation.bedrooms %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Balcony:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Balcony:</strong>
     <%= accomodation.balcony %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Location:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Location:</strong>
     <%= accomodation.location %>
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this accomodation", accomodation, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this accomodation', edit_accomodation_path(accomodation), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Show this accomodation", accomodation, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to 'Edit this accomodation', edit_accomodation_path(accomodation), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
     <hr class="mt-6">
   <% end %>
 </div>

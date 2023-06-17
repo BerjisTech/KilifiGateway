@@ -1,32 +1,32 @@
 <div id="<%= dom_id transaction %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Wallet:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Wallet:</strong>
     <%= transaction.wallet_id %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Amount:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Amount:</strong>
     <%= transaction.amount %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Fees:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Fees:</strong>
     <%= transaction.fees %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Conversion rate:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Conversion rate:</strong>
     <%= transaction.conversion_rate %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Details:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Details:</strong>
     <%= transaction.details %>
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this transaction", transaction, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this transaction', edit_transaction_path(transaction), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Show this transaction", transaction, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to 'Edit this transaction', edit_transaction_path(transaction), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
     <hr class="mt-6">
   <% end %>
 </div>

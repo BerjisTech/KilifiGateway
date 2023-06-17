@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_17_065945) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -134,7 +134,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_065945) do
     t.uuid "branch_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "store_id", null: false
     t.index ["branch_id"], name: "index_staffs_on_branch_id"
+    t.index ["store_id"], name: "index_staffs_on_store_id"
     t.index ["user_id"], name: "index_staffs_on_user_id"
   end
 
@@ -216,6 +218,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_065945) do
   add_foreign_key "services", "branches"
   add_foreign_key "services", "stores"
   add_foreign_key "staffs", "branches"
+  add_foreign_key "staffs", "stores"
   add_foreign_key "staffs", "users"
   add_foreign_key "store_contacts", "branches"
   add_foreign_key "store_contacts", "stores"

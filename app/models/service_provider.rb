@@ -8,8 +8,6 @@ class ServiceProvider < ApplicationRecord
     def fake_records
       10.times do
         ServiceProvider.create(
-          name: Faker::Company.name,
-          description: Faker::Company.catch_phrase,
           user_id: User.all.sample.id
         )
       end

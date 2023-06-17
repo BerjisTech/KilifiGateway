@@ -8,7 +8,7 @@ class Transaction < ApplicationRecord
     def fake_records
       10.times do
         Transaction.create(
-          amount: Faker::Number.decimal(2),
+          amount: Faker::Number.decimal.round(2),
           wallet_id: Wallet.all.sample.id
         )
       end

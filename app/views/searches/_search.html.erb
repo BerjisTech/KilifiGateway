@@ -1,37 +1,37 @@
 <div id="<%= dom_id search %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Term:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Term:</strong>
     <%= search.term %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Category:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Category:</strong>
     <%= search.category %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">User:</strong>
     <%= search.user_id %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Ip:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Ip:</strong>
     <%= search.ip %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Location:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Location:</strong>
     <%= search.location %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Referer:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Referer:</strong>
     <%= search.referer %>
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this search", search, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this search', edit_search_path(search), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Show this search", search, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to 'Edit this search', edit_search_path(search), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
     <hr class="mt-6">
   <% end %>
 </div>

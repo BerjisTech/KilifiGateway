@@ -1,22 +1,22 @@
 <div id="<%= dom_id store_contact %>">
   <p class="my-5">
-    <strong class="block font-medium mb-1">Store:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Store:</strong>
     <%= store_contact.store_id %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Branch:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Branch:</strong>
     <%= store_contact.branch_id %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Contact info:</strong>
+    <strong class="block font-medium text-decoration-none mb-1">Contact info:</strong>
     <%= store_contact.contact_info %>
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this store contact", store_contact, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this store contact', edit_store_contact_path(store_contact), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Show this store contact", store_contact, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to 'Edit this store contact', edit_store_contact_path(store_contact), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
     <hr class="mt-6">
   <% end %>
 </div>

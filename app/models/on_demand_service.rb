@@ -9,7 +9,7 @@ class OnDemandService < ApplicationRecord
         OnDemandService.create(
           name: Faker::Company.name,
           description: Faker::Company.catch_phrase,
-          serviceProvider_id: ServiceProvider.all.sample.id
+          service_provider_id: ServiceProvider.all.sample
         )
       end
     end

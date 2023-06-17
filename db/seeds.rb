@@ -6,3 +6,24 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+# Generate fake data for all models with gem faker
+
+User.fake_records
+Owner.fake_records
+Store.fake_records
+Branch.fake_records
+StoreContact.fake_records
+Staff.fake_records
+Search.fake_records
+Accomodation.fake_records
+Product.fake_records
+ProductVariant.fake_records
+Service.fake_records
+ServiceVariant.fake_records
+OnDemandService.fake_records
+AcceptedCurrency.fake_records
+Wallet.fake_records
+Transaction.fake_records
+GovernmentFacility.fake_records
+ServiceProvider.fake_records

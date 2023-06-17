@@ -1,6 +1,13 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+    mode: 'jit',
+    purge: [
+        './public/*.html',
+        './app/helpers/**/*.rb',
+        './app/javascript/**/*.js',
+        './app/views/**/*.{erb,haml,html,slim}'
+    ],
     content: [
         './public/*.html',
         './app/helpers/**/*.rb',
@@ -50,7 +57,7 @@ module.exports = {
             },
             backgroundImage: {
                 'hero-pattern':
-                    "url('https://www.amboseliparkkenya.com/wp-content/uploads/2022/08/photo-1586442993463-6afde6161fc0.jpeg')",
+                    "url('https://theexpatmummy.com/wp-content/uploads/2022/12/IMG_9594-1-scaled.jpeg')",
             },
         },
         screens: {

@@ -8,8 +8,7 @@ class StoreContact < ApplicationRecord
     def fake_records
       10.times do
         StoreContact.create(
-          name: Faker::Company.name,
-          description: Faker::Company.catch_phrase,
+          contact_info: Faker::PhoneNumber.cell_phone,
           store_id: Store.all.sample.id,
           branch_id: Branch.all.sample.id
         )

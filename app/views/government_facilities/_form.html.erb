@@ -1,6 +1,6 @@
 <%= form_with(model: government_facility, class: "contents") do |form| %>
   <% if government_facility.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium text-decoration-none rounded-lg mt-3">
       <h2><%= pluralize(government_facility.errors.count, "error") %> prohibited this government_facility from being saved:</h2>
 
       <ul>
@@ -27,6 +27,6 @@
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white text-decoration-none inline-block font-medium text-decoration-none cursor-pointer" %>
   </div>
 <% end %>

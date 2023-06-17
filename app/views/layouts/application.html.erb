@@ -13,9 +13,13 @@
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
   <body class="bg-slate-300">
-    <%= yield %>
+    <%= render 'commons/navigation/main' %>
+    <div class="<%= controller_name != 'tezo' && action_name != 'center' ? 'mt-[10vh]' : '' %>"><%= yield %></div>
   </body>
 </html>

@@ -1,16 +1,30 @@
-<div class="block w-screen h-screen bg-no-repeat bg-cover bg-opacity-50 bg-center bg-fixed bg-hero-pattern d-flex align-items-start justify-content-center gap-3 flex-column">
-  <div class="text-[40px] fw-bolder text-slate-800">All Your Needs In One Place</div>
-  <%= form_with(model: Search.new, class: "contents d-flex align-items-center justify-content-start bg-green-600") do |form| %>
-    <div class="form-floating my-5">
+<div class="block w-screen h-screen bg-no-repeat bg-cover bg-opacity-20 bg-center bg-fixed bg-hero-pattern d-flex align-items-start justify-content-center gap-3 flex-column">
+  <div class="text-[70px] fw-bolder text-slate-800 ps-5">All Your Needs In One Place</div>
+  <%= form_with(model: Search.new, class: "min-w-[50%] contents d-flex align-items-center justify-content-start bg-green-400") do |form| %>
+    <div class="form-floating my-3 flex-fill">
       <%= form.text_field :term, class: "rounded-none bg-transparent border-0 form-control", placeholder: 'Search within Kilifi' %>
       <%= form.label :term, 'Search Anything here', class: 'bg-transparent' %>
     </div>
-    <div class="form-floating my-5">
+    <div class="form-floating my-3">
       <%= form.select :category, @search_categories, {}, class: "rounded-none bg-transparent border-0 form-select", 'aria-label': 'Service Category' %>
-      <%= form.label :category, class: 'bg-transparent' %>
+      <%= form.label :category, 'Service Category', class: 'bg-transparent' %>
     </div>
     <div class="inline bg-green-800 h-full d-flex align-items-center justify-content-center">
-      <%= form.submit class: "rounded-lg py-3 px-5 bg-[#2B4506] text-white inline-block font-medium cursor-pointer" %>
+      <%= form.button class: "rounded-lg py-3 px-5 bg-transparent text-white text-decoration-none inline-block font-medium text-decoration-none cursor-pointer" do %>
+        <i class="material-icons fs-1">search</i>
+      <% end %>
     </div>
   <% end %>
+</div>
+<div class="sticky grid grid-cols-4 bg-slate-100 py-4">
+  <%= link_to "Accomodation", accomodations_path, class: "text-center text-decoration-none"%>
+  <%= link_to "Shopping", stores_path, class: "text-center text-decoration-none #{ controller_name }"%>
+  <%= link_to "On Demand Services", on_demand_services_path, class: "text-center text-decoration-none"%>
+  <%= link_to "Government Services", government_facilities_path, class: "text-center text-decoration-none"%>
+</div>
+<div class="block w-screen h-screen d-flex align-items-start justify-content-center gap-3 flex-column">
+
+</div>
+<div class="block w-screen h-screen d-flex align-items-start justify-content-center gap-3 flex-column">
+
 </div>

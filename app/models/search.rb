@@ -7,9 +7,12 @@ class Search < ApplicationRecord
     def fake_records
       10.times do
         Search.create(
-          name: Faker::Company.name,
-          description: Faker::Company.catch_phrase,
-          user_id: User.all.sample.id
+          term: Faker::Lorem.word,
+          category: Faker::Lorem.word,
+          user: User.all.sample,
+          ip: Faker::Internet.ip_v4_address,
+          location: Faker::Address.full_address,
+          referer: Faker::Internet.url
         )
       end
     end

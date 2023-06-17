@@ -6,8 +6,7 @@ class GovernmentFacility < ApplicationRecord
       10.times do
         GovernmentFacility.create(
           name: Faker::Company.name,
-          description: Faker::Company.catch_phrase,
-          owner_id: Owner.all.sample.id
+          location: Faker::Address.full_address
         )
       end
     end

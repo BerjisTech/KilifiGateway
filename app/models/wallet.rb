@@ -8,9 +8,10 @@ class Wallet < ApplicationRecord
     def fake_records
       10.times do
         Wallet.create(
-          name: Faker::Company.name,
-          description: Faker::Company.catch_phrase,
-          user_id: User.all.sample.id
+          user: User.all.sample,
+          currency: %w[USD EUR GBP].sample,
+          amount: Faker::Number.decimal,
+          conversion_rate: Faker::Number.decimal
         )
       end
     end
