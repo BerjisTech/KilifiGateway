@@ -4,16 +4,16 @@
     <i class="fa fa-search"></i>
   </div>
   <div class="search-button__search-bar">
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= form_with url: search_path, method: :get, local: true, class: "d-flex bg-red-800" do |f| %>
       <div class="form-floating">
         <%= f.label :term, 'Search Term', class: "form-control", placeholder: "Placeholder" %>
         <%= f.text_field :term %>
       </div>
       <div class="form-floating">
         <%= f.select :category, @search_categories, prompt: 'Select Category', class: "form-control", placeholder: "Placeholder" %>
-        <%= f.label :category, 'Category' %>
+        <%= f.label :category %>
       </div>
-      <%= f.submit 'Search' %>
+      <%= f.submit 'Search', class: "btn btn-primary btn-lg" %>
     <% end %>
   </div>
 </div>

@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ @import "../../../node_modules/bootstrap/scss/bootstrap";
+body {
+  background-color: #f4f4f4;
+}
