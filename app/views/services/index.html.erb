@@ -8,7 +8,7 @@
     <%= link_to 'New service', new_service_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white text-decoration-none block font-medium text-decoration-none" %>
   </div>
 
-  <div id="services" class="min-w-full">
+  <div id="services" class="min-w-full d-flex flex-wrap align-items-start justify-content-start gap-2">
     <%= render @services %>
   </div>
 </div>

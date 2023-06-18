@@ -8,7 +8,7 @@
     <%= link_to 'New on demand service', new_on_demand_service_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white text-decoration-none block font-medium text-decoration-none" %>
   </div>
 
-  <div id="on_demand_services" class="min-w-full">
+  <div id="on_demand_services" class="min-w-full d-flex flex-wrap align-items-start justify-content-start gap-2">
     <%= render @on_demand_services %>
   </div>
 </div>
