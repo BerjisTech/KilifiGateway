@@ -7,6 +7,7 @@ class Accomodation < ApplicationRecord
     def fake_records
       10.times do
         Accomodation.create(
+          name: Faker::Name.name,
           owner: Owner.all.sample,
           description: Faker::Lorem.paragraph,
           bathrooms: rand(1..5),

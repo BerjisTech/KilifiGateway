@@ -33,6 +33,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
     t.integer "bedrooms"
     t.boolean "balcony"
     t.string "location"
+    t.string "name"
+    t.float "price"
+    t.float "rating"
+    t.float "latitude"
+    t.float "longitude"
+    t.json "amenities"
+    t.string "currency"
+    t.integer "max_guests"
+    t.integer "min_stay"
+    t.integer "max_stay"
+    t.integer "guests_included"
+    t.integer "extra_guest_fee"
+    t.integer "cleaning_fee"
+    t.integer "security_deposit"
+    t.integer "service_fee"
+    t.integer "host_fee"
+    t.integer "cancellation_policy"
+    t.integer "cancellation_days"
+    t.integer "cancellation_penalty"
+    t.integer "cancellation_rate"
+    t.integer "cancellation_rate_period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_accomodations_on_owner_id"
@@ -188,6 +209,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.string "name"
+    t.string "phone"
+    t.string "address"
+    t.string "city"
+    t.string "country"
+    t.string "postal_code"
+    t.string "state"
+    t.string "timezone"
+    t.string "currency"
+    t.string "language"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -206,6 +237,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
     t.index ["user_id"], name: "index_wallets_on_user_id"
   end
 
+  add_foreign_key "accomodations", "owners"
   add_foreign_key "branches", "stores"
   add_foreign_key "on_demand_services", "service_providers"
   add_foreign_key "owners", "users"
@@ -222,6 +254,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
   add_foreign_key "staffs", "users"
   add_foreign_key "store_contacts", "branches"
   add_foreign_key "store_contacts", "stores"
+  add_foreign_key "stores", "owners"
   add_foreign_key "transactions", "wallets"
   add_foreign_key "wallets", "users"
 end
