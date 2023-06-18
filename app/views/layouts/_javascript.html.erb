@@ -1,0 +1,21 @@
+<script>
+  function processImage(element_class){
+    var colorThief = new ColorThief();
+    var imgElement = document.querySelector(`.${element_class} img`);
+
+    // Create a new Image object
+    var img = new Image();
+    img.crossOrigin = "Anonymous";  // This signals that we want to request CORS approval
+    img.src = imgElement.src;
+
+    img.onload = function() {
+        // Get the palette (we'll just use the first two colors here).
+        var palette = colorThief.getPalette(img, 2);
+
+        // Now you can set the gradient on your element.
+        var element = document.querySelector(`.${element_class}`);
+        element.style.background = `linear-gradient(to right, rgba(${palette[0].join(',')}), rgba(${palette[1].join(',')})), url('${img.src}') no-repeat`;
+        element.style.backgroundSize = 'cover';
+    };
+  }
+</script>
