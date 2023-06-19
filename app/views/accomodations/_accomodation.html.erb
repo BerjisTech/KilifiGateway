@@ -1,137 +1,180 @@
-<div id="<%= dom_id accomodation %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Owner:</strong>
-    <%= accomodation.owner_id %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= accomodation.description %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Bathrooms:</strong>
-    <%= accomodation.bathrooms %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Bedrooms:</strong>
-    <%= accomodation.bedrooms %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Balcony:</strong>
-    <%= accomodation.balcony %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Location:</strong>
-    <%= accomodation.location %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
-    <%= accomodation.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Price:</strong>
-    <%= accomodation.price %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Rating:</strong>
-    <%= accomodation.rating %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Latitude:</strong>
-    <%= accomodation.latitude %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Longitude:</strong>
-    <%= accomodation.longitude %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Amenities:</strong>
-    <%= accomodation.amenities %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Currency:</strong>
-    <%= accomodation.currency %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Max guests:</strong>
-    <%= accomodation.max_guests %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Min stay:</strong>
-    <%= accomodation.min_stay %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Max stay:</strong>
-    <%= accomodation.max_stay %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Guests included:</strong>
-    <%= accomodation.guests_included %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Extra guest fee:</strong>
-    <%= accomodation.extra_guest_fee %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Cleaning fee:</strong>
-    <%= accomodation.cleaning_fee %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Security deposit:</strong>
-    <%= accomodation.security_deposit %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Service fee:</strong>
-    <%= accomodation.service_fee %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Host fee:</strong>
-    <%= accomodation.host_fee %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Cancellation policy:</strong>
-    <%= accomodation.cancellation_policy %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Cancellation days:</strong>
-    <%= accomodation.cancellation_days %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Cancellation penalty:</strong>
-    <%= accomodation.cancellation_penalty %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Cancellation rate:</strong>
-    <%= accomodation.cancellation_rate %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this accomodation", accomodation, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this accomodation', edit_accomodation_path(accomodation), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
+<%
+  owner = accomodation.owner
+  user = owner.user
+%>
+<div id="<%= dom_id accomodation %>" class="w-full">
+  <div class="row w-full">
+    <div class="col-sm-8 h-full">
+      <div class="d-flex gap-2 flex-wrap p-0">
+        <div class="<%= dom_id accomodation %> flex-fill d-flex align-items-center justify-content-center">
+          <img src="https://picsum.photos/500/300?random=1" class="rounded-lg h-full object-cover" onload="processImage('<%= dom_id accomodation %>', this.src)">
+        </div>
+        <div>
+          <img src="https://picsum.photos/500/300?random=2" class="rounded-lg h-[100px]">
+          <img src="https://picsum.photos/500/300?random=3" class="rounded-lg h-[100px] my-2">
+          <img src="https://picsum.photos/500/300?random=4" class="rounded-lg h-[100px] my-2">
+          <img src="https://picsum.photos/500/300?random=5" class="rounded-lg h-[100px]">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4 h-full sticky">
+      <div class="d-flex w-full flex-column gap-2">
+        <% if action_name != "show" %>
+          <div class="d-flex w-full">
+            <%= link_to 'visibility', accomodation, class: "text-green-600 material-icons flex-fill text-decoration-none text-center rounded-lg py-3 px-5 bg-gray-100" %>
+            <%= link_to 'edit', edit_accomodation_path(accomodation), class: "text-green-600 material-icons text-center text-decoration-none rounded-lg py-3 ml-2 px-5 bg-gray-100" %>
+          </div>
+        <% end %>
+        <div class="fw-bold fs-3"><%= accomodation.name.capitalize %></div>
+        <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md">
+          <div class="fw-bold fw-bold text-green-600"><%= accomodation.rating %></div>
+          <div class="d-flex flex-column flex-fill text-[12px]">
+            <div>Pleasant</div>
+            <div>2000 REVIEWS</div>
+          </div>
+          <div class="bg-slate-300 rounded-md p-2 fw-bold text-slate-600">More</div>
+        </div>
+        <div class="d-flex align-items-center justify-content-between p-2">
+          <div class="d-flex align-items-center justify-content-center">
+            <span class="material-icons">group</span>
+            <span class=""><%= accomodation.max_guests %> Persons</span>
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-2">
+            <span class=""><%= accomodation.max_stay %> nights</span>
+            <span class="">incl. taxes</span>
+          </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md"></div>
+        <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md"></div>
+        <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md fw-bold text-[12px] text-green-600">
+          <div class="d-flex align-items-center justify-content-start flex-fill flex-column">
+            <span class="material-icons">reviews</span>
+            <span>REVIEWS</span>
+          </div>
+          <div class="d-flex align-items-center justify-content-start flex-fill flex-column">
+            <span class="material-icons">pin_drop</span>
+            <span>LOCATION</span>
+          </div>
+          <div class="d-flex align-items-center justify-content-start flex-fill flex-column">
+            <span class="material-icons">barcode_reader</span>
+            <span>AMENITIES</span>
+          </div>
+          <div class="d-flex align-items-center justify-content-start flex-fill flex-column">
+            <span class="material-icons">loyalty</span>
+            <span>ALL DEALS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row w-full">
+    <div class="col-sm-8 h-full"></div>
+    <div class="col-sm-4 h-full sticky"></div>
+  </div>
+  <div>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Owner:</strong>
+      <%= accomodation.owner_id %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Description:</strong>
+      <%= accomodation.description %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Bathrooms:</strong>
+      <%= accomodation.bathrooms %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Bedrooms:</strong>
+      <%= accomodation.bedrooms %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Balcony:</strong>
+      <%= accomodation.balcony %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Location:</strong>
+      <%= accomodation.location %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Name:</strong>
+      <%= accomodation.name %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Price:</strong>
+      <%= accomodation.price %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Rating:</strong>
+      <%= accomodation.rating %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Latitude:</strong>
+      <%= accomodation.latitude %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Longitude:</strong>
+      <%= accomodation.longitude %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Amenities:</strong>
+      <%= accomodation.amenities %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Currency:</strong>
+      <%= accomodation.currency %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Max guests:</strong>
+      <%= accomodation.max_guests %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Min stay:</strong>
+      <%= accomodation.min_stay %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Max stay:</strong>
+      <%= accomodation.max_stay %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Guests included:</strong>
+      <%= accomodation.guests_included %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Extra guest fee:</strong>
+      <%= accomodation.extra_guest_fee %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Cleaning fee:</strong>
+      <%= accomodation.cleaning_fee %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Security deposit:</strong>
+      <%= accomodation.security_deposit %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Service fee:</strong>
+      <%= accomodation.service_fee %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Host fee:</strong>
+      <%= accomodation.host_fee %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Cancellation policy:</strong>
+      <%= accomodation.cancellation_policy %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Cancellation days:</strong>
+      <%= accomodation.cancellation_days %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Cancellation penalty:</strong>
+      <%= accomodation.cancellation_penalty %>
+    </p>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Cancellation rate:</strong>
+      <%= accomodation.cancellation_rate %>
+    </p>
+  </div>
 </div>

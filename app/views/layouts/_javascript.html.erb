@@ -1,12 +1,11 @@
 <script>
-  function processImage(element_class){
+  function processImage(element_class, image){
     var colorThief = new ColorThief();
-    var imgElement = document.querySelector(`.${element_class} img`);
 
     // Create a new Image object
     var img = new Image();
     img.crossOrigin = "Anonymous";  // This signals that we want to request CORS approval
-    img.src = imgElement.src;
+    img.src = image;
 
     img.onload = function() {
         // Get the palette (we'll just use the first two colors here).
@@ -14,8 +13,30 @@
 
         // Now you can set the gradient on your element.
         var element = document.querySelector(`.${element_class}`);
-        element.style.background = `linear-gradient(to right, rgba(${palette[0].join(',')}), rgba(${palette[1].join(',')})), url('${img.src}') no-repeat`;
-        element.style.backgroundSize = 'cover';
+        element.style.background = `linear-gradient(to right, rgba(${palette[0].join(',')}), rgba(${palette[1].join(',')})), url('${img.src}') no-repeat`
+        element.style.boxShadow = `0 0 100px rgba(${palette[0].join(',')}), 0 0 40px rgba(${palette[1].join(',')})`
+        element.style.backgroundSize = 'cover'
+
+        let color1 = `rgba(${palette[0].join(',')}, 0.5)`;
+        let color2 = `rgba(${palette[1].join(',')}, 0.5)`;
+
+        // Add the pseudo-element with the backdrop filter and background color.
+        let style = document.createElement('style');
+        style.innerHTML = `
+        .${element_class}::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          backdrop-filter: blur(10px);
+          background: linear-gradient(to right, ${color1}, ${color2});
+          mix-blend-mode: overlay;
+          z-index: -1;
+        }
+        `;
+        document.head.appendChild(style);
     };
   }
 </script>

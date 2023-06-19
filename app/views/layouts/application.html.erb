@@ -23,6 +23,6 @@
   </head>
   <body class="bg-slate-300">
     <%= render 'commons/navigation/main' %>
-    <div class="<%= controller_name != 'tezo' && action_name != 'center' ? 'mt-[10vh]' : '' %>"><%= yield %></div>
+    <%= yield %>
   </body>
 </html>
