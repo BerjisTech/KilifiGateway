@@ -42,14 +42,14 @@
       <%= accomodation.location[0..40] %>...
     </p>
   </div>
-  <p class="px-2">
+  <p class="px-2 m-0">
     <strong class="block font-medium text-decoration-none mb-1"><%= accomodation.name %></strong>
   </p>
-  <p class="flex-grow-1 p-2">
+  <p class="flex-grow-1 p-2 m-0">
     <%= accomodation.description %>
   </p>
   <% if action_name != "show" %>
-    <div class="w-full d-flex align-items-center justify-content-center gap-2 p-2">
+    <div class="w-full d-flex align-items-center justify-content-center gap-2 p-2 m-0">
       <%= link_to "View Details", accomodation, class: "bg-slate-300 flex-fill rounded-lg text-center p-2 inline-block font-medium text-decoration-none" %>
       <%- if current_user&.id == owner.user_id || current_user&.admin %>
         <%= link_to 'edit', edit_accomodation_path(accomodation), class: "bg-slate-300 material-icons text-center rounded-lg p-2 inline-block font-medium text-decoration-none" %>

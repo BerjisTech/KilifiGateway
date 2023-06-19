@@ -1,0 +1,20 @@
+<div id="<%= dom_id government_facility %>" class="m-1 bg-white rounded-md p-2">
+  <div class="position-relative w-full h-[250px] bg-blue-200 rounded-md">
+    <div class="position-absolute d-flex align-items-center justify-content-between top-0 left-0 right-0 w-full p-2">
+      <span class="material-icons">store</span>
+      <span class="material-icons">wishlist</span>
+    </div>
+    <div class="position-absolute d-flex align-items-center justify-content-between bottom-0 left-0 right-0 w-full p-2">
+      <span class="material-icons">store</span>
+      <span class="material-icons">store</span>
+    </div>
+  </div>
+  <% if action_name != "show" %>
+    <div class="d-flex">
+      <%= link_to "web", government_facility, class: "material-icons flex-fill rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium d-flex align-items-center justify-content-center text-decoration-none" %>
+      <% if current_user&.admin %>
+        <%= link_to 'Edit this service', edit_government_facility_path(government_facility), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
