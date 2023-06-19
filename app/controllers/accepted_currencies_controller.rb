@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 class AcceptedCurrenciesController < ApplicationController
-  before_action :set_accepted_currency, only: %i[show edit update destroy]
+  before_action :set_accepted_currency, only: %i[ show edit update destroy ]
 
   # GET /accepted_currencies or /accepted_currencies.json
   def index
@@ -9,7 +7,8 @@ class AcceptedCurrenciesController < ApplicationController
   end
 
   # GET /accepted_currencies/1 or /accepted_currencies/1.json
-  def show; end
+  def show
+  end
 
   # GET /accepted_currencies/new
   def new
@@ -17,7 +16,8 @@ class AcceptedCurrenciesController < ApplicationController
   end
 
   # GET /accepted_currencies/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /accepted_currencies or /accepted_currencies.json
   def create
@@ -25,9 +25,7 @@ class AcceptedCurrenciesController < ApplicationController
 
     respond_to do |format|
       if @accepted_currency.save
-        format.html do
-          redirect_to accepted_currency_url(@accepted_currency), notice: 'Accepted currency was successfully created.'
-        end
+        format.html { redirect_to accepted_currency_url(@accepted_currency), notice: "Accepted currency was successfully created." }
         format.json { render :show, status: :created, location: @accepted_currency }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,9 +38,7 @@ class AcceptedCurrenciesController < ApplicationController
   def update
     respond_to do |format|
       if @accepted_currency.update(accepted_currency_params)
-        format.html do
-          redirect_to accepted_currency_url(@accepted_currency), notice: 'Accepted currency was successfully updated.'
-        end
+        format.html { redirect_to accepted_currency_url(@accepted_currency), notice: "Accepted currency was successfully updated." }
         format.json { render :show, status: :ok, location: @accepted_currency }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -56,21 +52,19 @@ class AcceptedCurrenciesController < ApplicationController
     @accepted_currency.destroy
 
     respond_to do |format|
-      format.html { redirect_to accepted_currencies_url, notice: 'Accepted currency was successfully destroyed.' }
+      format.html { redirect_to accepted_currencies_url, notice: "Accepted currency was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_accepted_currency
+      @accepted_currency = AcceptedCurrency.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_accepted_currency
-    @accepted_currency = AcceptedCurrency.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def accepted_currency_params
-    params.require(:accepted_currency).permit(:code, :code_three, :country, :name, :value_against_dollar,
-                                              :conversion_rate)
-  end
+    # Only allow a list of trusted parameters through.
+    def accepted_currency_params
+      params.require(:accepted_currency).permit(:code, :code_three, :country, :name, :value_against_dollar, :conversion_rate)
+    end
 end

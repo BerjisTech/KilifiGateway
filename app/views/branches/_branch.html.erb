@@ -1,17 +1,47 @@
 <div id="<%= dom_id branch %>">
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Store:</strong>
+    <strong class="block font-medium mb-1">Store:</strong>
     <%= branch.store_id %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Location:</strong>
+    <strong class="block font-medium mb-1">Location:</strong>
     <%= branch.location %>
   </p>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Open time:</strong>
+    <%= branch.open_time %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Close time:</strong>
+    <%= branch.close_time %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Open weekends:</strong>
+    <%= branch.open_weekends %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Open public holidays:</strong>
+    <%= branch.open_public_holidays %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Open 24hrs:</strong>
+    <%= branch.open_24hrs %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Open 24hrs weekends:</strong>
+    <%= branch.open_24hrs_weekends %>
+  </p>
+
   <% if action_name != "show" %>
-    <%= link_to "Show this branch", branch, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
-    <%= link_to 'Edit this branch', edit_branch_path(branch), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to "Show this branch", branch, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this branch', edit_branch_path(branch), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

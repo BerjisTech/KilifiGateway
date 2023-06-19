@@ -1,22 +1,72 @@
 <div id="<%= dom_id on_demand_service %>">
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Service provider:</strong>
+    <strong class="block font-medium mb-1">Service provider:</strong>
     <%= on_demand_service.service_provider_id %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Name:</strong>
+    <strong class="block font-medium mb-1">Name:</strong>
     <%= on_demand_service.name %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Description:</strong>
+    <strong class="block font-medium mb-1">Description:</strong>
     <%= on_demand_service.description %>
   </p>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Service type:</strong>
+    <%= on_demand_service.service_type %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Service category:</strong>
+    <%= on_demand_service.service_category %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Service sub category:</strong>
+    <%= on_demand_service.service_sub_category %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Duration:</strong>
+    <%= on_demand_service.duration %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Duration unit:</strong>
+    <%= on_demand_service.duration_unit %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Distance:</strong>
+    <%= on_demand_service.distance %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Distance unit:</strong>
+    <%= on_demand_service.distance_unit %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Price:</strong>
+    <%= on_demand_service.price %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Discount:</strong>
+    <%= on_demand_service.discount %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Tax:</strong>
+    <%= on_demand_service.tax %>
+  </p>
+
   <% if action_name != "show" %>
-    <%= link_to "Show this on demand service", on_demand_service, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
-    <%= link_to 'Edit this on demand service', edit_on_demand_service_path(on_demand_service), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to "Show this on demand service", on_demand_service, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this on demand service', edit_on_demand_service_path(on_demand_service), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

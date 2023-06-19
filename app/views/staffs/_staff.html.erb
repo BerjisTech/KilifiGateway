@@ -1,17 +1,72 @@
 <div id="<%= dom_id staff %>">
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">User:</strong>
+    <strong class="block font-medium mb-1">User:</strong>
     <%= staff.user_id %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Branch:</strong>
+    <strong class="block font-medium mb-1">Branch:</strong>
     <%= staff.branch_id %>
   </p>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Store:</strong>
+    <%= staff.store_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Date joined:</strong>
+    <%= staff.date_joined %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Date left:</strong>
+    <%= staff.date_left %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Staff type:</strong>
+    <%= staff.staff_type %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Staff category:</strong>
+    <%= staff.staff_category %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Staff sub category:</strong>
+    <%= staff.staff_sub_category %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Staff status:</strong>
+    <%= staff.staff_status %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Staff role:</strong>
+    <%= staff.staff_role %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Staff position:</strong>
+    <%= staff.staff_position %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Staff department:</strong>
+    <%= staff.staff_department %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Staff designation:</strong>
+    <%= staff.staff_designation %>
+  </p>
+
   <% if action_name != "show" %>
-    <%= link_to "Show this staff", staff, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
-    <%= link_to 'Edit this staff', edit_staff_path(staff), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to "Show this staff", staff, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this staff', edit_staff_path(staff), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

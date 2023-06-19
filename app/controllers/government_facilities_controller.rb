@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 class GovernmentFacilitiesController < ApplicationController
-  before_action :set_government_facility, only: %i[show edit update destroy]
+  before_action :set_government_facility, only: %i[ show edit update destroy ]
 
   # GET /government_facilities or /government_facilities.json
   def index
@@ -9,7 +7,8 @@ class GovernmentFacilitiesController < ApplicationController
   end
 
   # GET /government_facilities/1 or /government_facilities/1.json
-  def show; end
+  def show
+  end
 
   # GET /government_facilities/new
   def new
@@ -17,7 +16,8 @@ class GovernmentFacilitiesController < ApplicationController
   end
 
   # GET /government_facilities/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /government_facilities or /government_facilities.json
   def create
@@ -25,10 +25,7 @@ class GovernmentFacilitiesController < ApplicationController
 
     respond_to do |format|
       if @government_facility.save
-        format.html do
-          redirect_to government_facility_url(@government_facility),
-                      notice: 'Government facility was successfully created.'
-        end
+        format.html { redirect_to government_facility_url(@government_facility), notice: "Government facility was successfully created." }
         format.json { render :show, status: :created, location: @government_facility }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,10 +38,7 @@ class GovernmentFacilitiesController < ApplicationController
   def update
     respond_to do |format|
       if @government_facility.update(government_facility_params)
-        format.html do
-          redirect_to government_facility_url(@government_facility),
-                      notice: 'Government facility was successfully updated.'
-        end
+        format.html { redirect_to government_facility_url(@government_facility), notice: "Government facility was successfully updated." }
         format.json { render :show, status: :ok, location: @government_facility }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -58,20 +52,19 @@ class GovernmentFacilitiesController < ApplicationController
     @government_facility.destroy
 
     respond_to do |format|
-      format.html { redirect_to government_facilities_url, notice: 'Government facility was successfully destroyed.' }
+      format.html { redirect_to government_facilities_url, notice: "Government facility was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_government_facility
+      @government_facility = GovernmentFacility.find(params[:id])
+    end
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_government_facility
-    @government_facility = GovernmentFacility.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def government_facility_params
-    params.require(:government_facility).permit(:name, :type, :location)
-  end
+    # Only allow a list of trusted parameters through.
+    def government_facility_params
+      params.require(:government_facility).permit(:name, :facility_type, :location, :address, :city, :state, :country, :pincode, :phone, :email, :website, :contact)
+    end
 end

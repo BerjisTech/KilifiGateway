@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_19_014554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "accepted_currencies", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "code", limit: 2
-    t.string "code_three", limit: 3
+    t.string "code"
+    t.string "code_three"
     t.string "country"
     t.string "name"
     t.float "value_against_dollar"
@@ -53,7 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
     t.integer "cancellation_days"
     t.integer "cancellation_penalty"
     t.integer "cancellation_rate"
-    t.integer "cancellation_rate_period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_accomodations_on_owner_id"
@@ -62,6 +61,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
   create_table "branches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "store_id", null: false
     t.string "location"
+    t.string "open_time"
+    t.string "close_time"
+    t.boolean "open_weekends"
+    t.boolean "open_public_holidays"
+    t.boolean "open_24hrs"
+    t.boolean "open_24hrs_weekends"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["store_id"], name: "index_branches_on_store_id"
@@ -69,8 +74,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
 
   create_table "government_facilities", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "facility_type"
     t.string "location"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "pincode"
+    t.string "phone"
+    t.string "email"
+    t.string "website"
+    t.string "contact"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,6 +93,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
     t.uuid "service_provider_id", null: false
     t.string "name"
     t.text "description"
+    t.string "service_type"
+    t.string "service_category"
+    t.string "service_sub_category"
+    t.float "duration"
+    t.float "duration_unit"
+    t.float "distance"
+    t.float "distance_unit"
+    t.float "price"
+    t.float "discount"
+    t.float "tax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["service_provider_id"], name: "index_on_demand_services_on_service_provider_id"
@@ -95,6 +119,48 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
     t.uuid "product_id", null: false
     t.string "name"
     t.text "description"
+    t.string "color"
+    t.string "size"
+    t.string "weight"
+    t.string "weight_unit"
+    t.string "dimension"
+    t.string "dimension_unit"
+    t.string "sku"
+    t.string "barcode"
+    t.string "manufacturer"
+    t.string "brand"
+    t.string "model"
+    t.string "origin"
+    t.string "condition"
+    t.string "condition_note"
+    t.string "warranty"
+    t.string "warranty_period"
+    t.string "warranty_policy"
+    t.string "return_policy"
+    t.string "return_period"
+    t.float "price"
+    t.float "discount"
+    t.float "tax"
+    t.float "shipping_fee"
+    t.float "shipping_discount"
+    t.float "shipping_discount_price"
+    t.float "shipping_tax"
+    t.float "shipping_weight"
+    t.float "shipping_weight_unit"
+    t.float "shipping_dimension"
+    t.float "shipping_dimension_unit"
+    t.float "shipping_distance"
+    t.float "shipping_distance_unit"
+    t.float "shipping_duration"
+    t.boolean "featured"
+    t.boolean "best_seller"
+    t.boolean "new_arrival"
+    t.boolean "on_display"
+    t.boolean "on_sale"
+    t.boolean "on_auction"
+    t.boolean "on_rent"
+    t.boolean "on_demand"
+    t.boolean "on_pre_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_product_variants_on_product_id"
@@ -105,6 +171,51 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
     t.uuid "branch_id", null: false
     t.string "name"
     t.text "description"
+    t.string "product_type"
+    t.string "product_category"
+    t.string "product_sub_category"
+    t.string "color"
+    t.string "size"
+    t.string "weight"
+    t.string "weight_unit"
+    t.string "dimension"
+    t.string "dimension_unit"
+    t.string "sku"
+    t.string "barcode"
+    t.string "manufacturer"
+    t.string "brand"
+    t.string "model"
+    t.string "origin"
+    t.string "condition"
+    t.string "condition_note"
+    t.string "warranty"
+    t.string "warranty_period"
+    t.string "warranty_policy"
+    t.string "return_policy"
+    t.string "return_period"
+    t.float "price"
+    t.float "discount"
+    t.float "tax"
+    t.float "shipping_fee"
+    t.float "shipping_discount"
+    t.float "shipping_discount_price"
+    t.float "shipping_tax"
+    t.float "shipping_weight"
+    t.float "shipping_weight_unit"
+    t.float "shipping_dimension"
+    t.float "shipping_dimension_unit"
+    t.float "shipping_distance"
+    t.float "shipping_distance_unit"
+    t.float "shipping_duration"
+    t.boolean "featured"
+    t.boolean "best_seller"
+    t.boolean "new_arrival"
+    t.boolean "on_display"
+    t.boolean "on_sale"
+    t.boolean "on_auction"
+    t.boolean "on_rent"
+    t.boolean "on_demand"
+    t.boolean "on_pre_order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["branch_id"], name: "index_products_on_branch_id"
@@ -125,6 +236,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
 
   create_table "service_providers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
+    t.string "email"
+    t.string "phone_number"
+    t.boolean "email_verified"
+    t.boolean "phone_number_verified"
+    t.boolean "available"
+    t.boolean "online"
+    t.float "average_rating"
+    t.integer "number_of_ratings"
+    t.string "currency"
+    t.string "bio"
+    t.string "location"
+    t.float "jobs_done"
+    t.float "total_earnings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_service_providers_on_user_id"
@@ -144,6 +268,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
     t.uuid "branch_id", null: false
     t.string "name"
     t.text "description"
+    t.string "service_type"
+    t.string "service_category"
+    t.string "service_sub_category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["branch_id"], name: "index_services_on_branch_id"
@@ -153,9 +280,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
   create_table "staffs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
     t.uuid "branch_id", null: false
+    t.uuid "store_id", null: false
+    t.date "date_joined"
+    t.date "date_left"
+    t.string "staff_type"
+    t.string "staff_category"
+    t.string "staff_sub_category"
+    t.string "staff_status"
+    t.string "staff_role"
+    t.string "staff_position"
+    t.string "staff_department"
+    t.string "staff_designation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "store_id", null: false
     t.index ["branch_id"], name: "index_staffs_on_branch_id"
     t.index ["store_id"], name: "index_staffs_on_store_id"
     t.index ["user_id"], name: "index_staffs_on_user_id"
@@ -175,6 +312,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
     t.uuid "owner_id", null: false
     t.string "name"
     t.text "description"
+    t.string "location"
+    t.string "open_time"
+    t.string "close_time"
+    t.boolean "open_weekends"
+    t.boolean "open_public_holidays"
+    t.boolean "open_24hrs"
+    t.boolean "open_24hrs_weekends"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_stores_on_owner_id"
@@ -186,6 +330,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
     t.integer "fees"
     t.float "conversion_rate"
     t.text "details"
+    t.string "transaction_type"
+    t.string "transaction_category"
+    t.string "transaction_sub_category"
+    t.string "transaction_status"
+    t.string "transaction_mode"
+    t.string "transaction_method"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["wallet_id"], name: "index_transactions_on_wallet_id"
@@ -229,8 +379,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_124603) do
 
   create_table "wallets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id", null: false
-    t.string "currency", default: "USD"
-    t.float "amount", default: 0.0
+    t.string "currency"
+    t.float "amount"
     t.float "conversion_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

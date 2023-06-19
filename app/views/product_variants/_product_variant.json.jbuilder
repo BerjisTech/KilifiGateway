@@ -1,4 +1,2 @@
-# frozen_string_literal: true
-
-json.extract! product_variant, :id, :product_id, :name, :description, :created_at, :updated_at
+json.extract! product_variant, :id, :product_id, :name, :description, :color, :size, :weight, :weight_unit, :dimension, :dimension_unit, :sku, :barcode, :manufacturer, :brand, :model, :origin, :condition, :condition_note, :warranty, :warranty_period, :warranty_policy, :return_policy, :return_period, :price, :discount, :tax, :shipping_fee, :shipping_discount, :shipping_discount_price, :shipping_tax, :shipping_weight, :shipping_weight_unit, :shipping_dimension, :shipping_dimension_unit, :shipping_distance, :shipping_distance_unit, :shipping_duration, :featured, :best_seller, :new_arrival, :on_display, :on_sale, :on_auction, :on_rent, :on_demand, :on_pre_order, :created_at, :updated_at
 json.url product_variant_url(product_variant, format: :json)

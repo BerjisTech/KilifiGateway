@@ -1,27 +1,42 @@
 <div id="<%= dom_id service %>">
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Store:</strong>
+    <strong class="block font-medium mb-1">Store:</strong>
     <%= service.store_id %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Branch:</strong>
+    <strong class="block font-medium mb-1">Branch:</strong>
     <%= service.branch_id %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Name:</strong>
+    <strong class="block font-medium mb-1">Name:</strong>
     <%= service.name %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Description:</strong>
+    <strong class="block font-medium mb-1">Description:</strong>
     <%= service.description %>
   </p>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Service type:</strong>
+    <%= service.service_type %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Service category:</strong>
+    <%= service.service_category %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Service sub category:</strong>
+    <%= service.service_sub_category %>
+  </p>
+
   <% if action_name != "show" %>
-    <%= link_to "Show this service", service, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
-    <%= link_to 'Edit this service', edit_service_path(service), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to "Show this service", service, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this service', edit_service_path(service), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

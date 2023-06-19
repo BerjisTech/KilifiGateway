@@ -1,22 +1,22 @@
 <div id="<%= dom_id service_variant %>">
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Service:</strong>
+    <strong class="block font-medium mb-1">Service:</strong>
     <%= service_variant.service_id %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Name:</strong>
+    <strong class="block font-medium mb-1">Name:</strong>
     <%= service_variant.name %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Description:</strong>
+    <strong class="block font-medium mb-1">Description:</strong>
     <%= service_variant.description %>
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this service variant", service_variant, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
-    <%= link_to 'Edit this service variant', edit_service_variant_path(service_variant), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to "Show this service variant", service_variant, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this service variant', edit_service_variant_path(service_variant), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

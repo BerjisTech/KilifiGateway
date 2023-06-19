@@ -1,22 +1,57 @@
 <div id="<%= dom_id store %>">
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Owner:</strong>
+    <strong class="block font-medium mb-1">Owner:</strong>
     <%= store.owner_id %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Name:</strong>
+    <strong class="block font-medium mb-1">Name:</strong>
     <%= store.name %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Description:</strong>
+    <strong class="block font-medium mb-1">Description:</strong>
     <%= store.description %>
   </p>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Location:</strong>
+    <%= store.location %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Open time:</strong>
+    <%= store.open_time %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Close time:</strong>
+    <%= store.close_time %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Open weekends:</strong>
+    <%= store.open_weekends %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Open public holidays:</strong>
+    <%= store.open_public_holidays %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Open 24hrs:</strong>
+    <%= store.open_24hrs %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Open 24hrs weekends:</strong>
+    <%= store.open_24hrs_weekends %>
+  </p>
+
   <% if action_name != "show" %>
-    <%= link_to "Show this store", store, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
-    <%= link_to 'Edit this store', edit_store_path(store), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to "Show this store", store, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this store', edit_store_path(store), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

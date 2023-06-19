@@ -1,12 +1,77 @@
 <div id="<%= dom_id service_provider %>">
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">User:</strong>
+    <strong class="block font-medium mb-1">User:</strong>
     <%= service_provider.user_id %>
   </p>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email:</strong>
+    <%= service_provider.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Phone number:</strong>
+    <%= service_provider.phone_number %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email verified:</strong>
+    <%= service_provider.email_verified %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Phone number verified:</strong>
+    <%= service_provider.phone_number_verified %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Available:</strong>
+    <%= service_provider.available %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Online:</strong>
+    <%= service_provider.online %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Average rating:</strong>
+    <%= service_provider.average_rating %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Number of ratings:</strong>
+    <%= service_provider.number_of_ratings %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Currency:</strong>
+    <%= service_provider.currency %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Bio:</strong>
+    <%= service_provider.bio %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Location:</strong>
+    <%= service_provider.location %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Jobs done:</strong>
+    <%= service_provider.jobs_done %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Total earnings:</strong>
+    <%= service_provider.total_earnings %>
+  </p>
+
   <% if action_name != "show" %>
-    <%= link_to "Show this service provider", service_provider, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
-    <%= link_to 'Edit this service provider', edit_service_provider_path(service_provider), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to "Show this service provider", service_provider, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this service provider', edit_service_provider_path(service_provider), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

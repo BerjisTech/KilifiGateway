@@ -1,37 +1,37 @@
 <div id="<%= dom_id accepted_currency %>">
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Code:</strong>
+    <strong class="block font-medium mb-1">Code:</strong>
     <%= accepted_currency.code %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Code three:</strong>
+    <strong class="block font-medium mb-1">Code three:</strong>
     <%= accepted_currency.code_three %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Country:</strong>
+    <strong class="block font-medium mb-1">Country:</strong>
     <%= accepted_currency.country %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Name:</strong>
+    <strong class="block font-medium mb-1">Name:</strong>
     <%= accepted_currency.name %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Value against dollar:</strong>
+    <strong class="block font-medium mb-1">Value against dollar:</strong>
     <%= accepted_currency.value_against_dollar %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Conversion rate:</strong>
+    <strong class="block font-medium mb-1">Conversion rate:</strong>
     <%= accepted_currency.conversion_rate %>
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this accepted currency", accepted_currency, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
-    <%= link_to 'Edit this accepted currency', edit_accepted_currency_path(accepted_currency), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to "Show this accepted currency", accepted_currency, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this accepted currency', edit_accepted_currency_path(accepted_currency), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

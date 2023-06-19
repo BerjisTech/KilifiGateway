@@ -1,22 +1,67 @@
 <div id="<%= dom_id government_facility %>">
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Name:</strong>
+    <strong class="block font-medium mb-1">Name:</strong>
     <%= government_facility.name %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Type:</strong>
-    <%= government_facility.type %>
+    <strong class="block font-medium mb-1">Facility type:</strong>
+    <%= government_facility.facility_type %>
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium text-decoration-none mb-1">Location:</strong>
+    <strong class="block font-medium mb-1">Location:</strong>
     <%= government_facility.location %>
   </p>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Address:</strong>
+    <%= government_facility.address %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">City:</strong>
+    <%= government_facility.city %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">State:</strong>
+    <%= government_facility.state %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Country:</strong>
+    <%= government_facility.country %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Pincode:</strong>
+    <%= government_facility.pincode %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Phone:</strong>
+    <%= government_facility.phone %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Email:</strong>
+    <%= government_facility.email %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Website:</strong>
+    <%= government_facility.website %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Contact:</strong>
+    <%= government_facility.contact %>
+  </p>
+
   <% if action_name != "show" %>
-    <%= link_to "Show this government facility", government_facility, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
-    <%= link_to 'Edit this government facility', edit_government_facility_path(government_facility), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium text-decoration-none" %>
+    <%= link_to "Show this government facility", government_facility, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this government facility', edit_government_facility_path(government_facility), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

@@ -1,3 +1,140 @@
+<!--div id="<%= dom_id accomodation %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Owner:</strong>
+    <%= accomodation.owner_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= accomodation.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Bathrooms:</strong>
+    <%= accomodation.bathrooms %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Bedrooms:</strong>
+    <%= accomodation.bedrooms %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Balcony:</strong>
+    <%= accomodation.balcony %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Location:</strong>
+    <%= accomodation.location %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Name:</strong>
+    <%= accomodation.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Price:</strong>
+    <%= accomodation.price %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Rating:</strong>
+    <%= accomodation.rating %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Latitude:</strong>
+    <%= accomodation.latitude %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Longitude:</strong>
+    <%= accomodation.longitude %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Amenities:</strong>
+    <%= accomodation.amenities %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Currency:</strong>
+    <%= accomodation.currency %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Max guests:</strong>
+    <%= accomodation.max_guests %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Min stay:</strong>
+    <%= accomodation.min_stay %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Max stay:</strong>
+    <%= accomodation.max_stay %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Guests included:</strong>
+    <%= accomodation.guests_included %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Extra guest fee:</strong>
+    <%= accomodation.extra_guest_fee %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cleaning fee:</strong>
+    <%= accomodation.cleaning_fee %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Security deposit:</strong>
+    <%= accomodation.security_deposit %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Service fee:</strong>
+    <%= accomodation.service_fee %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Host fee:</strong>
+    <%= accomodation.host_fee %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cancellation policy:</strong>
+    <%= accomodation.cancellation_policy %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cancellation days:</strong>
+    <%= accomodation.cancellation_days %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cancellation penalty:</strong>
+    <%= accomodation.cancellation_penalty %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Cancellation rate:</strong>
+    <%= accomodation.cancellation_rate %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this accomodation", accomodation, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this accomodation', edit_accomodation_path(accomodation), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div-->
 <%
   owner = accomodation.owner
   user = owner.user
