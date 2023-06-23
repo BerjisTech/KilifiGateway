@@ -1,6 +1,8 @@
 <div class="block w-full h-screen bg-no-repeat bg-cover bg-opacity-20 bg-center bg-fixed bg-hero-pattern d-flex align-items-start justify-content-center gap-3 flex-column">
   <div class="text-[70px] fw-bolder text-slate-800 ps-5">All Your Needs In One Place</div>
   <%= form_with(model: Search.new, class: "min-w-[50%] contents d-flex align-items-center justify-content-start bg-green-400") do |form| %>
+    <%= form.hidden_field :location, value: request.original_url %>
+    <%= form.hidden_field :referer, value: request.referer %>
     <div class="form-floating my-3 flex-fill">
       <%= form.text_field :term, class: "rounded-none bg-transparent border-0 form-control", placeholder: 'Search within Kilifi' %>
       <%= form.label :term, 'Search Anything here', class: 'bg-transparent' %>
@@ -17,52 +19,32 @@
   <% end %>
 </div>
 <div class="sticky grid grid-cols-4 bg-slate-100">
-  <%= link_to "Accomodation", accomodations_path, class: "py-4 text-center text-decoration-none"%>
-  <%= link_to "Shopping", stores_path, class: "py-4 text-center text-decoration-none #{ controller_name }"%>
-  <%= link_to "On Demand Services", on_demand_services_path, class: "py-4 text-center text-decoration-none"%>
-  <%= link_to "Government Services", government_facilities_path, class: "py-4 text-center text-decoration-none"%>
+  <%= link_to "Accomodation", "#accomodation", class: "py-4 text-center text-decoration-none"%>
+  <%= link_to "Shopping", "#product", class: "py-4 text-center text-decoration-none #{ controller_name }"%>
+  <%= link_to "On Demand Services", "#ondemandservice", class: "py-4 text-center text-decoration-none"%>
+  <%= link_to "Government Services", "#governmentfacility", class: "py-4 text-center text-decoration-none"%>
 </div>
-<div class="row w-full m-0 p-0">
-  <div class="col-sm-2 bg-slate-600 h-full sm:h-auto m-0 p-0"><%= link_to "Accomodation", accomodations_path, class: "sticky d-flex align-items-center justify-content-center fs-2 text-white bg-slate-600 w-full text-decoration-none py-3"%></div>
-  <div class="col-sm-10 p-0 m-0">
-    <div class="row m-0 p-0 h-full" role="button">
-      <% Accomodation.limit(4).each_with_index do |accomodation, index| %>
-        <div class="col-sm-3 px-0 py-2 m-0"><%= render partial: 'accomodations/accomodation_condensed', locals: { accomodation: accomodation, index: index } %></div>
-      <% end %>
-    </div>
-  </div>
+<div class="row m-0 p-0 h-full" role="button" id="accomodation">
+  <% Accomodation.limit(4).each_with_index do |accomodation, index| %>
+    <div class="col-sm-3 px-0 py-2 m-0"><%= render partial: 'accomodations/accomodation_condensed', locals: { accomodation: accomodation, index: index } %></div>
+  <% end %>
 </div>
-<div class="row w-full m-0 p-0">
-  <div class="col-sm-2 bg-slate-600 h-full sm:h-auto m-0 p-0"><%= link_to "Shopping", stores_path, class: "sticky d-flex align-items-center justify-content-center fs-2 text-white bg-slate-600 w-full text-decoration-none py-3"%></div>
-  <div class="col-sm-10 p-0 m-0">
-    <div class="row m-0 p-0 h-full" role="button">
-      <% (Product.limit(2) + Service.limit(2)).shuffle.each_with_index do |item, index| %>
-        <% if item.is_a?(Product) %>
-          <div class="col-sm-3 p-0 m-0"><%= render partial: 'products/product_condensed', locals: { product: item, index: index } %></div>
-        <% elsif item.is_a?(Service) %>
-          <div class="col-sm-3 p-0 m-0"><%= render partial: 'services/service_condensed', locals: { service: item, index: index } %></div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+<div class="row m-0 p-0 h-full" role="button" id="product">
+  <% (Product.limit(2) + Service.limit(2)).shuffle.each_with_index do |item, index| %>
+    <% if item.is_a?(Product) %>
+      <div class="col-sm-3 p-0 m-0"><%= render partial: 'products/product_condensed', locals: { product: item, index: index } %></div>
+    <% elsif item.is_a?(Service) %>
+      <div class="col-sm-3 p-0 m-0"><%= render partial: 'services/service_condensed', locals: { service: item, index: index } %></div>
+    <% end %>
+  <% end %>
 </div>
-<div class="row w-full m-0 p-0">
-  <div class="col-sm-2 bg-slate-600 h-full sm:h-auto m-0 p-0"><%= link_to "On Demand", on_demand_services_path, class: "sticky d-flex align-items-center justify-content-center fs-2 text-white bg-slate-600 w-full text-decoration-none py-3"%></div>
-  <div class="col-sm-10 p-0 m-0">
-    <div class="row m-0 p-0 h-full" role="button">
-      <% OnDemandService.limit(4).each_with_index do |on_demand_service, index| %>
-        <div class="col-sm-3 p-0 m-0"><%= render partial: 'on_demand_services/on_demand_service_condensed', locals: { on_demand_service: on_demand_service, index: index } %></div>
-      <% end %>
-    </div>
-  </div>
+<div class="row m-0 p-0 h-full" role="button" id="ondemandservice">
+  <% OnDemandService.limit(4).each_with_index do |on_demand_service, index| %>
+    <div class="col-sm-3 p-0 m-0"><%= render partial: 'on_demand_services/on_demand_service_condensed', locals: { on_demand_service: on_demand_service, index: index } %></div>
+  <% end %>
 </div>
-<div class="row w-full m-0 p-0">
-  <div class="col-sm-2 bg-slate-600 h-full sm:h-auto m-0 p-0"><%= link_to "GoK", government_facilities_path, class: "sticky d-flex align-items-center justify-content-center fs-2 text-white bg-slate-600 w-full text-decoration-none py-3"%></div>
-  <div class="col-sm-10 p-0 m-0">
-    <div class="row m-0 p-0 h-full" role="button">
-      <% GovernmentFacility.limit(4).each_with_index do |government_facility, index| %>
-        <div class="col-sm-3 p-0 m-0"><%= render partial: 'government_facilities/government_facility_condensed', locals: { government_facility: government_facility, index: index } %></div>
-      <% end %>
-    </div>
-  </div>
+<div class="row m-0 p-0 h-full" role="button" id="governmentfacility">
+  <% GovernmentFacility.limit(4).each_with_index do |government_facility, index| %>
+    <div class="col-sm-3 p-0 m-0"><%= render partial: 'government_facilities/government_facility_condensed', locals: { government_facility: government_facility, index: index } %></div>
+  <% end %>
 </div>

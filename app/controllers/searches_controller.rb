@@ -22,6 +22,10 @@ class SearchesController < ApplicationController
   # POST /searches or /searches.json
   def create
     @search = Search.new(search_params)
+    @search.user = current_user.present? || @search.nil? ? current_user : @guest_user
+    @search.ip = request.remote_ip
+    @search.location = request if @search.ip == ''
+    @search.referer = request.referer if @search.referer == ''
 
     respond_to do |format|
       if @search.save
