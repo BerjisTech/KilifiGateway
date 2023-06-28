@@ -19,7 +19,7 @@ end
 end
 
 10.times do
-    ServiceProvider.create!(user: User.all.sample, email: Faker::Internet.email, phone_number: Faker::PhoneNumber.phone_number, email_verified: Faker::Boolean.boolean, phone_number_verified: Faker::Boolean.boolean, available: Faker::Boolean.boolean, online: Faker::Boolean.boolean, average_rating: Faker::Number.decimal(l_digits: 2), number_of_ratings: Faker::Number.number(digits: 2), currency: Faker::Currency.code, bio: Faker::Lorem.paragraph, location: Faker::Address.full_address, jobs_done: Faker::Number.decimal(l_digits: 2), total_earnings: Faker::Number.decimal(l_digits: 2))
+    ServiceProvider.create!(user: User.where.not(id: sombo.id).sample, email: Faker::Internet.email, phone_number: Faker::PhoneNumber.phone_number, email_verified: Faker::Boolean.boolean, phone_number_verified: Faker::Boolean.boolean, available: Faker::Boolean.boolean, online: Faker::Boolean.boolean, average_rating: Faker::Number.decimal(l_digits: 2), number_of_ratings: Faker::Number.number(digits: 2), currency: Faker::Currency.code, bio: Faker::Lorem.paragraph, location: Faker::Address.full_address, jobs_done: Faker::Number.decimal(l_digits: 2), total_earnings: Faker::Number.decimal(l_digits: 2))
 end
 
 10.times do
@@ -35,7 +35,7 @@ end
 end
 
 10.times do
-    Staff.create!(user: User.all.sample, branch: Branch.all.sample, store: Store.all.sample, date_joined: Faker::Date.backward(days: 14), date_left: Faker::Date.backward(days: 14), staff_type: Faker::Lorem.word, staff_category: Faker::Lorem.word, staff_sub_category: Faker::Lorem.word, staff_status: Faker::Lorem.word, staff_role: Faker::Lorem.word, staff_position: Faker::Lorem.word, staff_department: Faker::Lorem.word, staff_designation: Faker::Lorem.word)
+    Staff.create!(user: User.where.not(id: sombo.id).sample, branch: Branch.all.sample, store: Store.all.sample, date_joined: Faker::Date.backward(days: 14), date_left: Faker::Date.backward(days: 14), staff_type: Faker::Lorem.word, staff_category: Faker::Lorem.word, staff_sub_category: Faker::Lorem.word, staff_status: Faker::Lorem.word, staff_role: Faker::Lorem.word, staff_position: Faker::Lorem.word, staff_department: Faker::Lorem.word, staff_designation: Faker::Lorem.word)
 end
 
 10.times do
@@ -63,7 +63,7 @@ end
 end
 
 10.times do
-    Wallet.create!(user: User.all.sample, currency: Faker::Currency.code, amount: Faker::Number.decimal(l_digits: 2), conversion_rate: Faker::Number.decimal(l_digits: 2))
+    Wallet.create!(user: User.where.not(id: sombo.id).sample, currency: Faker::Currency.code, amount: Faker::Number.decimal(l_digits: 2), conversion_rate: Faker::Number.decimal(l_digits: 2))
 end
 
 10.times do
@@ -79,5 +79,5 @@ end
 end
 
 10.times do
-    Search.create!(term: Faker::Lorem.word, category: Faker::Lorem.word, user: User.all.sample, ip: Faker::Internet.ip_v4_address, location: Faker::Address.full_address, referer: Faker::Internet.url)
+    Search.create!(term: Faker::Lorem.word, category: Faker::Lorem.word, user: User.where.not(id: sombo.id).sample, ip: Faker::Internet.ip_v4_address, location: Faker::Address.full_address, referer: Faker::Internet.url)
 end
