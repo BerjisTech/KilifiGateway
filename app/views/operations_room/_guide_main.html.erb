@@ -1,0 +1,13 @@
+<div class="w-full d-flex align-items-start justify-content-center p-3">
+  <div class="bg-white rounded-md p-3 w-[80%] min-w-[300px] d-flex flex-column gap-3">
+    <% if @owner.nil?%>
+      <%= render 'guide_owner' %>
+    <% end %>
+    <% if @staff.nil?%>
+      <%= render 'guide_staff' %>
+    <% end %>
+    <% if @service_provider.nil?%>
+      <%= render 'guide_service_provider' %>
+    <% end %>
+  </div>
+</div>

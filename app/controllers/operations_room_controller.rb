@@ -1,4 +1,5 @@
 class OperationsRoomController < ApplicationController
+  before_action :authenticate_user!
   before_action :setup_links
 
   ACTION_ICONS = {
@@ -21,7 +22,11 @@ class OperationsRoomController < ApplicationController
   }
 
   def command_center
-      # render json: @action_links
+    if @owner.present? || @service_provider.present? || @staff.present?
+      render '_dashboard'
+    else
+      render '_guide_main'
+    end
   end
 
   def stores
@@ -40,6 +45,7 @@ class OperationsRoomController < ApplicationController
   end
 
   def on_demand_services
+    
   end
 
   def treasury
@@ -50,8 +56,22 @@ class OperationsRoomController < ApplicationController
 
   def setup_links
     @action_links = []
+    owner = Owner.where(user_id: current_user.id).first
+    staff = Staff.where(user_id: current_user.id).first
+    service_provider = ServiceProvider.where(user_id: current_user.id).first
+
+    skip_actions = ['create_default_guest_user', 'set_static_arrays', 'method_arrays', 
+                    'has_parent', 'has_children', 'setup_links', 
+                    'owners', 'staffs', 'products', 'service', 'on_demand_services']
+
+    skip_actions_without_owner = ['owners', 'stores', 'branches', 'staffs', 'products', 'services']
+    skip_actions_without_service_provider = ['on_demand_services']
+
     OperationsRoomController.action_methods.sort.map do |action|
-      next unless !['create_default_guest_user','set_static_arrays','method_arrays','has_parent','has_children', 'setup_links'].include? action
+      next if skip_actions.include?(action)
+      next if owner.blank? && staff.blank? && skip_actions_without_owner.include?(action)
+      next if service_provider.blank? && skip_actions_without_service_provider.include?(action)
+
       @action_links << OpenStruct.new(
         name: action,
         path: "#{root_url}operations_room/#{action}",
@@ -62,8 +82,10 @@ class OperationsRoomController < ApplicationController
         debug: "Action: #{action}, Icon: #{ACTION_ICONS[action]}"
       )
     end
-    @action_icons = {}
-    @action_children = {}
+
+    @owner = Owner.where(user_id: current_user.id).first
+    @service_provider = ServiceProvider.where(user_id: current_user.id).first
+    @staff = Staff.where(user_id: current_user.id).first
   end
 
   def has_parent(action)

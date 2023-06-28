@@ -37,6 +37,7 @@ button {
   z-index: 999;
 }
 a{
+  text-decoration: none !important;
   color: #166534 !important;
   &:hover,
   &:focus,

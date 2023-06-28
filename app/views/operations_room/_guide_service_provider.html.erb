@@ -1,0 +1,13 @@
+<div class="d-flex flex-column gap-2">
+  <div class="fs-4 fw-bold border-b-1 border-dashed border-b-slate-800 border-t-1 border-t-slate-800 w-full p-2">Want to provide on demand services</div>
+  <div class="p-2">
+    <div class="d-flex align-items-start justify-content-start gap-3" title="Mark as done">
+      <input type="checkbox" name="create_on_demand_service" role="button" class="my-1 rounded-md" id="create_on_demand_service"/>
+      <label for="create_on_demand_service" role="button" class="d-flex flex-column align-items-start justify-ciontent-start gap-2">
+        <div class="fw-bold">Add your first service</div>
+        <div>You can create multiple services and add schedules to each. Allow different customer on different tier to get your services at the comfort of their homes. Easily manage your finances in one area.</div>
+        <%= link_to "Add your first service", new_on_demand_service_path, class: "bg-green-800 hover:bg-green-400 rounded-md text-white fw-bold p-2" %>
+      </label>
+    </div>
+  </div>
+</div>
