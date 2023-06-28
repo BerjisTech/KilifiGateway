@@ -84,3 +84,7 @@ gem 'tailwindcss-rails', '~> 2.0'
 gem 'hotwire-livereload', '~> 1.2', group: :development
 
 gem 'faker', '~> 3.2'
+
+gem "omniauth-google-oauth2", "~> 1.1"
+
+gem "omniauth", "~> 2.1"
