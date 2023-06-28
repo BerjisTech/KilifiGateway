@@ -2,7 +2,7 @@ class OperationsRoomController < ApplicationController
   before_action :authenticate_user!
 
   def command_center
-    if @owner.present? || @service_provider.present? || @staff.present?
+    if current_user.suggest_owner_guide || current_user.suggest_service_provider_guide
       render '_dashboard'
     else
       render '_guide_main'
