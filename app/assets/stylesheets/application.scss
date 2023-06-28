@@ -36,4 +36,12 @@ button {
   top: 0;
   z-index: 999;
 }
+a{
+  color: #166534 !important;
+  &:hover,
+  &:focus,
+  &:active{
+    color: #2cbe64 !important;
+  }
+}
 @import "../../../node_modules/bootstrap/scss/bootstrap";

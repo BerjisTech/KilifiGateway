@@ -17,6 +17,7 @@ class SearchesController < ApplicationController
 
   # GET /searches/1/edit
   def edit
+    redirect_to searches_url
   end
 
   # POST /searches or /searches.json
