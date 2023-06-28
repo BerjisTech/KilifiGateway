@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'operations_room/support'
   get 'operations_room/property'
   get 'operations_room/properties', controller: 'operations_room', action: 'property'
+  get 'ignore_suggester/:suggester', controller: 'operations_room', action: 'ignore_suggester', as: :ignore_suggester
   get 'command_room', controller: 'operations_room', action: 'command_center'
   get 'operations_room', controller: 'operations_room', action: 'command_center'
   get 'command_center', controller: 'operations_room', action: 'command_center'

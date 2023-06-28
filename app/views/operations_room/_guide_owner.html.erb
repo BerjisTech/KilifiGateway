@@ -1,16 +1,19 @@
 <div class="d-flex flex-column gap-2">
-  <div class="fs-4 fw-bold border-b-1 border-dashed border-slate-400 border-t-1 w-full p-2">Sell, Rent, Lease products, service or acomodation</div>
+  <div class="fs-4 fw-bold border-b-1 border-dashed border-slate-400 border-t-1 w-full p-2 d-flex justify-content-between align-items-center">
+    <span>Sell, Rent, Lease products, service or acomodation</span>
+    <%= link_to "Not Interested", ignore_suggester_path(suggester: 'owner'), class: "text-muted fs-6" %>
+  </div>
   <div class="p-2">
     <div class="d-flex align-items-start justify-content-start gap-3" title="Mark as done">
-      <input type="checkbox" name="create_store" role="button" class="my-1 rounded-md" id="create_store"/>
-      <label for="create_store" role="button" class="d-flex flex-column align-items-start justify-ciontent-start gap-2">
+      <input type="checkbox" name="owner" role="button" class="my-1 rounded-md ignore_suggester" id="owner"/>
+      <div role="button" class="d-flex flex-column align-items-start justify-content-start gap-2">
         <div class="fw-bold">Create youre first store</div>
         <div>Use the store to sell your products right from the comfort of your home. You can create more stores later. Each store can have multiple managed branches and you'll have the ability to seperate product, service and staff by the branches.</div>
         <div>
         <%= link_to "Create new store", new_store_path, class: "bg-green-800 hover:bg-green-400 rounded-md text-white fw-bold p-2" %>
         <%= link_to "Add A Property Listing", new_accomodation_path, class: "bg-green-800 hover:bg-green-400 rounded-md text-white fw-bold p-2" %>
         </div>
-      </label>
+      </div>
     </div>
   </div>
 </div>

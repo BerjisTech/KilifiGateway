@@ -2,11 +2,6 @@ class OperationsRoomController < ApplicationController
   before_action :authenticate_user!
 
   def command_center
-    if current_user.suggest_owner_guide || current_user.suggest_service_provider_guide
-      render '_dashboard'
-    else
-      render '_guide_main'
-    end
   end
 
   def property
@@ -35,5 +30,13 @@ class OperationsRoomController < ApplicationController
   end
 
   def support
+  end
+
+  def ignore_suggester
+    current_user.update(suggest_service_provider_guide: false) if params[:suggester] == 'service_provider'
+    current_user.update(suggest_owner_guide: false) if params[:suggester] == 'owner'
+    current_user.update(suggest_owner_guide: false, suggest_service_provider_guide: false) if params[:suggester] == 'both'
+    current_user.update(suggest_owner_guide: true, suggest_service_provider_guide: true) if params[:suggester] == 'admin_reset'
+    redirect_to operations_center_path
   end
 end
