@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   SKIP_COMMAND_CENTER_ACTIONS = %w[create_default_guest_user set_static_arrays method_arrays
                                    has_parent has_children setup_command_center_links
-                                   owners staffs products service on_demand_services].freeze
+                                   owners staffs products service on_demand_services ignore_suggester].freeze
 
   SKIP_ACTIONS_WITHOUT_OWNER = %w[owners stores branches staffs products services property].freeze
   SKIP_ACTIONS_WITHOUT_SERVICE_PROVIDER = ['on_demand_services'].freeze
