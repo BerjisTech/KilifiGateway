@@ -5,7 +5,7 @@
   <div class="w-full h-auto d-flex align-items-start justify-content-start flex-column">
     <% @action_links.map do |action| %>
       <% next unless !action.has_parent %>
-      <%= render partial: 'nav_link', locals: { action: action } %>
+      <%= render partial: 'operations_room/nav_link', locals: { action: action } %>
     <% end %>
   </div>
 </div>

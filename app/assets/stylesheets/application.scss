@@ -31,18 +31,42 @@ button {
     box-shadow: none !important;
   }
 }
-.sticky{
+.sticky {
   position: sticky;
   top: 0;
   z-index: 999;
 }
-a{
+a {
   text-decoration: none !important;
   color: #166534 !important;
   &:hover,
   &:focus,
-  &:active{
+  &:active {
     color: #2cbe64 !important;
   }
 }
+
+/* This will affect the entire document */
+html {
+  scrollbar-width: thin; /* for Firefox */
+  scrollbar-color: #166534 #fff; /* for Firefox */
+}
+
+/* For Chrome, Safari and Edge */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: #fff; /* Adjust track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #166534; /* Adjust thumb color */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #166534; /* Adjust thumb hover color */
+}
+
 @import "../../../node_modules/bootstrap/scss/bootstrap";

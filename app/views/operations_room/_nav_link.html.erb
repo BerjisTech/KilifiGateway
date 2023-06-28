@@ -13,7 +13,7 @@ active_link = (action_name == action.name) ? 'bg-green-500' : 'hover:bg-green-50
   </div>
   <% if action.has_children %>
     <% @action_links.filter{|link| link.parent == action.name }.map do |link| %>
-      <%= render partial: 'nav_link', locals: { action: link } %>
+      <%= render partial: 'operations_room/nav_link', locals: { action: link } %>
     <% end %>
   <% end %>
 <% end %>

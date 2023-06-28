@@ -21,8 +21,10 @@
     <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
   <body class="bg-slate-300">
-    <%= render 'commons/navigation/main' %>
-    <% if controller_name == 'operations_room' %>
+    <% if !is_devise_component && !is_control_room_component %>
+      <%= render 'commons/navigation/main' %>
+    <% end %>
+    <% if is_control_room_component && !is_devise_component %>
       <%= render 'operations_room/layout' %>
     <%else%>
       <%= yield %>
