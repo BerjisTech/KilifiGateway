@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'operations_room/on_demand_services'
   get 'operations_room/treasury'
   get 'operations_room/support'
+  get 'operations_room/property'
+  get 'operations_room/properties', controller: 'operations_room', action: 'property'
   get 'command_room', controller: 'operations_room', action: 'command_center'
   get 'operations_room', controller: 'operations_room', action: 'command_center'
   get 'command_center', controller: 'operations_room', action: 'command_center'
