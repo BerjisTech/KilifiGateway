@@ -1,0 +1,14 @@
+ 
+<div class="fs-4 px-4 d-flex align-items-center justify-content-center w-full flex-wrap py-2 bg-slate-300">
+  <div class="flex-fill d-flex align-items-center justify-content-start mx-3 p-2 rounded-md gap-3">
+  </div>
+  <div>
+    <% if user_signed_in? %>
+      <div class="d-flex gap-2 align-items-center justify-content-center">
+        <%= button_to 'logout', destroy_user_session_path, method: :delete, class: "material-icons text-decoration-none bg-slate-100 text-green-800 fw-bold py-2 px-3 rounded-lg" %>
+      </div>
+    <% else %>
+      <%= link_to "Login", new_user_session_path, class: "text-decoration-none bg-slate-100 text-green-800 fw-bold py-2 px-3 rounded-md"%>
+    <% end %>
+  </div>
+</div>

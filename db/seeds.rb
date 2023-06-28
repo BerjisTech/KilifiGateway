@@ -9,13 +9,13 @@
 
 # Generate fake data for all models with gem faker
 
-User.create(name: 'Lord Sombo', email: 'bo.kouru@gmail.com', password: 'password' )
+sombo = User.create(name: 'Lord Sombo', email: 'bo.kouru@gmail.com', password: 'password' )
 10.times do
     User.create(name: Faker::Name.name, email: Faker::Internet.email, password: 'password' )
 end
 
 10.times do
-    Owner.create!(user: User.all.sample)
+    Owner.create!(user: User.where.not(id: sombo.id).sample)
 end
 
 10.times do
