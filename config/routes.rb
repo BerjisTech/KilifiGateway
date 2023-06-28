@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   get 'operations_room/command_center'
   get 'operations_room/stores'
+  get 'operations_room/staffs'
   get 'operations_room/branches'
   get 'operations_room/products'
   get 'operations_room/services'
