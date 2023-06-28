@@ -1,0 +1,13 @@
+<div class="w-[100vw] h-[100vh] d-flex align-items-start justify-content-start">
+  <div class="w-[250px] h-full bg-green-800">
+    <%= render partial: 'operations_room/side_nav' %>
+  </div>
+  <div class="flex-grow h-full">
+    <div class="flex-grow w-full h-[5vh] bg-white">
+      <%= render partial: 'top_nav' %>
+    </div>
+    <div class="flex-grow w-full h-[95vh] overflow-y-auto">
+        <%= yield %>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get 'operations_room/on_demand_services'
   get 'operations_room/treasury'
   get 'operations_room/support'
+  get 'command_room', controller: 'operations_room', action: 'command_center'
+  get 'operations_room', controller: 'operations_room', action: 'command_center'
+  get 'command_center', controller: 'operations_room', action: 'command_center'
+  get 'operations_center', controller: 'operations_room', action: 'command_center'
   
   # Defines the root path route ("/")
   root 'tezo#center'

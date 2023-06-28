@@ -1,0 +1,18 @@
+<%
+parent_name = action.parent
+parent = @action_links.find { |link| link.name == parent_name }
+has_parent = action.has_parent
+indent = action.has_parent ? (parent.has_parent ? 'ms-5' : 'ms-3') : ''
+%>
+
+<%= link_to action.path, class: "p-2 w-full hover:bg-green-500" do %>
+  <div class="<%= indent %> d-flex align-items-center justify-content-start gap-2 p-2 text-slate-100 hover:text-slate-300 fw-bold">
+    <span class="material-icons"><%= action.icon %></span>
+    <span><%= action.name.gsub('_',' ').capitalize %></span>
+  </div>
+  <% if action.has_children %>
+    <% @action_links.filter{|link| link.parent == action.name }.map do |link| %>
+      <%= render partial: 'nav_link', locals: { action: link } %>
+    <% end %>
+  <% end %>
+<% end %>

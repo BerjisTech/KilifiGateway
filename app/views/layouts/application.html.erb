@@ -22,6 +22,10 @@
   </head>
   <body class="bg-slate-300">
     <%= render 'commons/navigation/main' %>
-    <%= yield %>
+    <% if controller_name == 'operations_room' %>
+      <%= render 'operations_room/layout' %>
+    <%else%>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

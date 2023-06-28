@@ -1,0 +1,14 @@
+<div class="h-[5vh] border-b-1 border-b-slate-950 border-b-solid d-flex align-items-center justify-content-center">
+  Logo
+</div>
+<div class="h-[90vh] overflow-y-auto">
+  <div class="w-full h-auto d-flex align-items-start justify-content-start flex-column">
+    <% @action_links.map do |action| %>
+      <% next unless !action.has_parent %>
+      <%= render partial: 'nav_link', locals: { action: action } %>
+    <% end %>
+  </div>
+</div>
+<div class="h-[5vh] border-t-1 border-t-slate-950 border-t-solid d-flex align-items-center justify-content-center">
+  Settings
+</div>

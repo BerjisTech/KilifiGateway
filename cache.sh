@@ -6,9 +6,6 @@ rm -rf -v node_modules
 echo "Removing yarn lock..."
 rm yarn.lock
 
-echo "Installing yarn..."
-yarn install --check-files --trace
-
 echo "Clearing Rails cache..."
 bundle exec rails runner "Rails.cache.clear" --trace
 
@@ -26,6 +23,9 @@ bundle exec rake assets:clean --trace
 
 echo "Cleaning webpacker..."
 bundle exec rake webpacker:clean --trace
+
+echo "Installing yarn..."
+yarn install --check-files --fix-missing --force --trace
 
 echo "Compiling webpacker..."
 bundle exec rake webpacker:compile --trace
