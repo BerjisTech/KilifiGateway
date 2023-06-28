@@ -369,6 +369,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_014554) do
     t.string "timezone"
     t.string "currency"
     t.string "language"
+    t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

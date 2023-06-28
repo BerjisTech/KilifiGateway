@@ -44,6 +44,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :currency
       t.string :language
 
+      t.boolean :admin, null: false, default: false
+
       t.timestamps null: false
     end
 

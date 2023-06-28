@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
 
   # GET /searches or /searches.json
   def index
-    @searches = Search.all
+    @searches = current_user&.admin ? Search.all : (user_signed_in? ? Search.where(user_id: current_user.id) : Search.where(ip: request.remote_ip))
   end
 
   # GET /searches/1 or /searches/1.json
