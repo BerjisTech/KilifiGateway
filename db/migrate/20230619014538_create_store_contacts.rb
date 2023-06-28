@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateStoreContacts < ActiveRecord::Migration[7.0]
   def change
     create_table :store_contacts, id: :uuid do |t|

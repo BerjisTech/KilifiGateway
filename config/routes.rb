@@ -17,12 +17,12 @@ Rails.application.routes.draw do
   get 'operations_room', controller: 'operations_room', action: 'command_center'
   get 'command_center', controller: 'operations_room', action: 'command_center'
   get 'operations_center', controller: 'operations_room', action: 'command_center'
-  
+
   # Defines the root path route ("/")
   root 'tezo#center'
 
   # User auth
-  devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+  devise_for :user, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
 
   # Resources
   resources :searches
@@ -45,5 +45,4 @@ Rails.application.routes.draw do
   get 'commons/search'
   get 'tezo/center'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
 end

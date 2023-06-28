@@ -1,1 +1,3 @@
-json.partial! "service_providers/service_provider", service_provider: @service_provider
+# frozen_string_literal: true
+
+json.partial! 'service_providers/service_provider', service_provider: @service_provider
