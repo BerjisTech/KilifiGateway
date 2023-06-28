@@ -42,17 +42,19 @@
     };
   }
 </script>
-<% if flash.any? %>
-  <% flash.each do |key, value| %>
-    <% type = key.to_s.gsub('alert', 'danger').gsub('notice', 'success') %>
-    <p id="flash-message" class="alert alert-<%= type %> custom_alert"><%= value %></p>
-    <script>
-      setTimeout(function() {
-        const element = document.getElementById('flash-message');
-        if (element) {
-          element.style.display = 'none';
-        }
-      }, 5000); // 3 seconds
-    </script>
+<% if !is_devise_component && !is_control_room_component %>
+  <% if flash.any? %>
+    <% flash.each do |key, value| %>
+      <% type = key.to_s.gsub('alert', 'danger').gsub('notice', 'success') %>
+      <p id="flash-message" class="alert alert-<%= type %> custom_alert"><%= value %></p>
+      <script>
+        setTimeout(function() {
+          const element = document.getElementById('flash-message');
+          if (element) {
+            element.style.display = 'none';
+          }
+        }, 5000); // 3 seconds
+      </script>
+    <% end %>
   <% end %>
 <% end %>

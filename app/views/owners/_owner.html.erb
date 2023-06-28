@@ -1,7 +1,7 @@
 <div id="<%= dom_id owner %>">
   <p class="my-5">
     <strong class="block font-medium mb-1">User:</strong>
-    <%= owner.user_id %>
+    <%= User.find(owner.user_id).name %>
   </p>
 
   <% if action_name != "show" %>

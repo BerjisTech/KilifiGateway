@@ -1,78 +1,80 @@
-<%= form_with(model: store, class: "contents") do |form| %>
-  <div class="p-3">
-    <% if store.errors.any? %>
-      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-        <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
-        <ul>
-          <% store.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="fw-bold fs-3">Store Identity</div>
-        <hr />
-        <div>Give your store a unique name that your customers will easily remember. Your store name is your path to your customer's heart. An optional descritpion can be added and used as a marketing avenue to introduce your store to your customers</div>
-      </div>
-      <div class="col-sm-8">
-        <div class="form-floating">
-          <%= form.text_field :name, class: "form-control", placeholder: "---" %>
-          <%= form.label :name %>
+<%= turbo_frame_tag "post" do %>
+  <%= form_with(model: store, class: "contents") do |form| %>
+    <div class="p-3">
+      <% if store.errors.any? %>
+        <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg my-3">
+          <h2><%= pluralize(store.errors.count, "error") %> prohibited this store from being saved:</h2>
+          <ul>
+            <% store.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
         </div>
-        <div class="my-5">
-          <%= form.label :description %>
-          <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <% end %>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="fw-bold fs-3">Store Identity</div>
+          <hr />
+          <div>Give your store a unique name that your customers will easily remember. Your store name is your path to your customer's heart. An optional descritpion can be added and used as a marketing avenue to introduce your store to your customers</div>
         </div>
+        <div class="col-sm-8">
+          <div class="form-floating">
+            <%= form.text_field :name, class: "form-control", placeholder: "---", required: "required" %>
+            <%= form.label :name %>
+          </div>
+          <div class="my-5">
+            <%= form.label :description %>
+            <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="fw-bold fs-3">Store Accesibility</div>
+          <hr />
+          <div>Let your customers know where the store is located and when you're open</div>
+        </div>
+        <div class="col-sm-8">
+          <div class="form-floating">
+            <%= form.text_field :location, class: "form-control", placeholder: "---" %>
+            <%= form.label :location %>
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-2">
+            <div class="my-5 flex-fill form-floating">
+              <%= form.time_field :open_time, class: "form-control", placeholder: "---", value: "%H:%M", min: 'hh:mm:ss', max: 'hh:mm:ss' %>
+              <%= form.label :open_time %>
+            </div>
+            <div class="my-5 flex-fill form-floating">
+              <%= form.time_field :close_time, class: "form-control", placeholder: "---", value: "%H:%M", min: 'hh:mm:ss', max: 'hh:mm:ss' %>
+              <%= form.label :close_time %>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-2">
+            <div class="my-5 flex-fill d-flex align-items-center justify-content-center gap-2">
+              <%= form.label :open_weekends %>
+              <%= form.check_box :open_weekends, class: "rouned-lg" %>
+            </div>
+            <div class="my-5 flex-fill d-flex align-items-center justify-content-center gap-2">
+              <%= form.label :open_public_holidays %>
+              <%= form.check_box :open_public_holidays, class: "rouned-lg" %>
+            </div>
+            <div class="my-5 flex-fill d-flex align-items-center justify-content-center gap-2">
+              <%= form.label :open_24hrs %>
+              <%= form.check_box :open_24hrs, class: "rouned-lg" %>
+            </div>
+            <div class="my-5 flex-fill d-flex align-items-center justify-content-center gap-2">
+              <%= form.label :open_24hrs_weekends %>
+              <%= form.check_box :open_24hrs_weekends, class: "rouned-lg" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <%= form.hidden_field :owner_id, value: current_user.id %>
+      <div class="block text-end">
+        <%= form.submit class: "rounded-lg py-3 px-5 bg-green-800 hover:bg-green-400 text-white inline-block font-medium cursor-pointer" %>
       </div>
     </div>
-    <hr />
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="fw-bold fs-3">Store Accesibility</div>
-        <hr />
-        <div>Let your customers know where the store is located and when you're open</div>
-      </div>
-      <div class="col-sm-8">
-        <div class="form-floating">
-          <%= form.label :location %>
-          <%= form.text_field :location, class: "form-control", placeholder: "---" %>
-        </div>
-        <div class="d-flex align-items-center justify-content-center gap-2">
-          <div class="my-5 flex-fill form-floating">
-            <%= form.time_field :open_time, class: "form-control", placeholder: "---" %>
-            <%= form.label :open_time %>
-          </div>
-          <div class="my-5 flex-fill form-floating">
-            <%= form.time_field :close_time, class: "form-control", placeholder: "---" %>
-            <%= form.label :close_time %>
-          </div>
-        </div>
-        <div class="d-flex align-items-center justify-content-center gap-2">
-          <div class="my-5 flex-fill d-flex align-items-center justify-content-center gap-2">
-            <%= form.label :open_weekends %>
-            <%= form.check_box :open_weekends, class: "rouned-lg" %>
-          </div>
-          <div class="my-5 flex-fill d-flex align-items-center justify-content-center gap-2">
-            <%= form.label :open_public_holidays %>
-            <%= form.check_box :open_public_holidays, class: "rouned-lg" %>
-          </div>
-          <div class="my-5 flex-fill d-flex align-items-center justify-content-center gap-2">
-            <%= form.label :open_24hrs %>
-            <%= form.check_box :open_24hrs, class: "rouned-lg" %>
-          </div>
-          <div class="my-5 flex-fill d-flex align-items-center justify-content-center gap-2">
-            <%= form.label :open_24hrs_weekends %>
-            <%= form.check_box :open_24hrs_weekends, class: "rouned-lg" %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr />
-    <%= form.hidden_field :owner_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-    <div class="block text-end">
-      <%= form.submit class: "rounded-lg py-3 px-5 bg-green-800 hover:bg-green-400 text-white inline-block font-medium cursor-pointer" %>
-    </div>
-  </div>
+  <% end %>
 <% end %>

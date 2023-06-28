@@ -7,7 +7,21 @@
       <%= render partial: 'operations_room/top_nav' %>
     </div>
     <div class="flex-grow w-full h-[95vh] overflow-y-auto">
-        <%= yield %>
+      <% if flash.any? %>
+        <% flash.each do |key, value| %>
+          <% type = key.to_s.gsub('alert', 'danger').gsub('notice', 'success') %>
+          <p id="flash-message" class="alert alert-<%= type %> custom_alert"><%= value %></p>
+          <script>
+            setTimeout(function() {
+              const element = document.getElementById('flash-message');
+              if (element) {
+                element.style.display = 'none';
+              }
+            }, 5000);
+          </script>
+        <% end %>
+      <% end %>
+      <%= yield %>
     </div>
   </div>
 </div>
