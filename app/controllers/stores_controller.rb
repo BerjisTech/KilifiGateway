@@ -23,29 +23,24 @@ class StoresController < ApplicationController
   def create
     @store = Store.new(store_params)
 
-    owner = Owner.where(owner_id: @store.owner_id)
-
-    @store.owner_id = Owner.find_or_create!(user: current_user).id if owner.nil?
+    @store.owner_id = Owner.find_or_create_by(user_id: current_user.id).id
 
     respond_to do |format|
       if @store.name.blank?
-        @store.errors.add(:base, "Name must exist")
+        @store.errors.add(:base, 'Name must exist')
         flash[:error] = @store
         format.html { render :new }
         format.json { render json: @store.errors, status: :unprocessable_entity }
+      elsif @store.save
+        current_user.update(suggest_owner_guide: false)
+        format.html { redirect_to store_url(@store), notice: 'Store was successfully created.' }
+        format.json { render :show, status: :created, location: @store }
       else
-        if @store.save
-          current_user.update(suggest_owner_guide: false)
-          format.html { redirect_to store_url(@store), notice: 'Store was successfully created.' }
-          format.json { render :show, status: :created, location: @store }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @store.errors, status: :unprocessable_entity }
-        end
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @store.errors, status: :unprocessable_entity }
       end
     end
   end
-
 
   # PATCH/PUT /stores/1 or /stores/1.json
   def update
