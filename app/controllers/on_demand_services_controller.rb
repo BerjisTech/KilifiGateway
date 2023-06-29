@@ -23,10 +23,13 @@ class OnDemandServicesController < ApplicationController
   def create
     @on_demand_service = OnDemandService.new(on_demand_service_params)
 
+    @on_demand_service.service_provider_id = ServiceProvider.find_or_create_by(user_id: current_user.id).id
+
     respond_to do |format|
       if @on_demand_service.save
+        current_user.update(suggest_service_provider_guide: false)
         format.html do
-          redirect_to on_demand_service_url(@on_demand_service), notice: 'On demand service was successfully created.'
+          redirect_to "#{root_url}/operations_room/on_demand_services", notice: 'On demand service was successfully created.'
         end
         format.json { render :show, status: :created, location: @on_demand_service }
       else

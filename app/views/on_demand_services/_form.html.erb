@@ -1,82 +1,64 @@
 <%= form_with(model: on_demand_service, class: "contents") do |form| %>
-  <% if on_demand_service.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(on_demand_service.errors.count, "error") %> prohibited this on_demand_service from being saved:</h2>
-
-      <ul>
-        <% on_demand_service.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div class="p-3">
+    <% if on_demand_service.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg my-3">
+        <h2><%= pluralize(on_demand_service.errors.count, "error") %> prohibited this on_demand_service from being saved:</h2>
+        <ul>
+          <% on_demand_service.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="fw-bold fs-3">Service description</div>
+        <hr />
+        <div>Describe your service in detail. Tell your clients as much as you possible can. Use this as a marketing avenue and try getting your potential clients' attention even without any other datails.</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-floating">
+          <%= form.text_field :name, class: "form-control", placeholder: "---", required: "required" %>
+          <%= form.label :name %>
+        </div>
+        <div class="my-5">
+          <%= form.label :description %>
+          <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="my-5">
-    <%= form.label :service_provider_id %>
-    <%= form.text_field :service_provider_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :service_type %>
-    <%= form.text_field :service_type, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :service_category %>
-    <%= form.text_field :service_category, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :service_sub_category %>
-    <%= form.text_field :service_sub_category, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :duration %>
-    <%= form.text_field :duration, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :duration_unit %>
-    <%= form.text_field :duration_unit, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :distance %>
-    <%= form.text_field :distance, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :distance_unit %>
-    <%= form.text_field :distance_unit, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :price %>
-    <%= form.text_field :price, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :discount %>
-    <%= form.text_field :discount, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :tax %>
-    <%= form.text_field :tax, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <hr />
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="fw-bold fs-3">Service Detail</div>
+        <hr />
+        <div>Select service details here. This will help you easily organize and manage your services. This also makes it easy for your potential clients to search for your services</div>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-floating my-5">
+          <%= form.text_field :service_type, class: "form-control", placeholder: "-----" %>
+          <%= form.label :service_type %>
+        </div>
+        <div class="d-flex align-items-center justify-content-center gap-2">
+          <div class="flex-fill form-floating">
+            <%= form.text_field :service_category, class: "form-control", placeholder: "-----" %>
+            <%= form.label :service_category %>
+          </div>
+          <div class="flex-fill form-floating">
+            <%= form.text_field :service_sub_category, class: "form-control", placeholder: "-----" %>
+            <%= form.label :service_sub_category %>
+          </div>
+        </div>
+        <div class="my-5 form-floating">
+          <%= form.text_field :price, class: "form-control", placeholder: "---" %>
+          <%= form.label :price %>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <%= form.hidden_field :service_provider_id, value: current_user.id %>
+    <div class="block text-end">
+      <%= form.submit class: "rounded-lg py-3 px-5 bg-green-800 hover:bg-green-400 text-white inline-block font-medium cursor-pointer" %>
+    </div>
   </div>
 <% end %>

@@ -26,11 +26,9 @@ class ApplicationController < ActionController::Base
   }.freeze
 
   SKIP_COMMAND_CENTER_ACTIONS = %w[create_default_guest_user set_static_arrays method_arrays
-                                   has_parent has_children setup_command_center_links
-                                   owners staffs products service on_demand_services ignore_suggester].freeze
+                                   has_parent has_children setup_command_center_links ignore_suggester].freeze
 
-  SKIP_ACTIONS_WITHOUT_OWNER = %w[owners stores branches staffs products services
-                                  property].freeze
+  SKIP_ACTIONS_WITHOUT_OWNER = %w[owners stores branches staffs products services].freeze
   SKIP_ACTIONS_WITHOUT_PROPERTY = %w[property].freeze
   SKIP_ACTIONS_WITHOUT_SERVICE_PROVIDER = ['on_demand_services'].freeze
 
@@ -59,7 +57,7 @@ class ApplicationController < ActionController::Base
     OperationsRoomController.action_methods.sort.map do |action|
       next if SKIP_COMMAND_CENTER_ACTIONS.include?(action)
       next if current_user.nil? || (owner.blank? && staff.blank? && SKIP_ACTIONS_WITHOUT_OWNER.include?(action))
-      next if current_user.nil? || (owner.blank? && SKIP_ACTIONS_WITHOUT_SERVICE_PROVIDER.include?(action))
+      next if current_user.nil? || (service_provider.blank? && SKIP_ACTIONS_WITHOUT_SERVICE_PROVIDER.include?(action))
       next if current_user.nil? || (!has_property && SKIP_ACTIONS_WITHOUT_PROPERTY.include?(action))
 
       @action_links << OpenStruct.new(
