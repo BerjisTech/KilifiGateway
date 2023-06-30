@@ -1,6 +1,6 @@
 <div class="block w-full h-screen bg-no-repeat bg-cover bg-opacity-20 bg-center bg-fixed bg-hero-pattern d-flex align-items-start justify-content-center gap-3 flex-column">
-  <div class="text-[70px] fw-bolder text-slate-800 ps-5">All Your Needs In One Place</div>
-  <%= form_with(model: Search.new, class: "min-w-[50%] contents d-flex align-items-center justify-content-start bg-green-400") do |form| %>
+  <div class="text-[70px] fw-bolder text-slate-800 backdrop-blur-xl px-4">All Your Needs In One Place</div>
+  <%= form_with(model: Search.new, class: "min-w-[50%] contents d-flex align-items-center justify-content-start bg-green-400 backdrop-blur-xl") do |form| %>
     <%= form.hidden_field :location, value: request.original_url %>
     <%= form.hidden_field :referer, value: request.referer %>
     <div class="form-floating my-3 flex-fill">
