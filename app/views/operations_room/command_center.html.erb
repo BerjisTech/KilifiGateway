@@ -1,4 +1,4 @@
-<% if current_user.suggest_owner_guide || current_user.suggest_service_provider_guide %>
+<% if current_user.suggest_owner_guide || current_user.suggest_service_provider_guide || current_user.suggest_property_guide %>
   <%= render 'operations_room/guide_main' %>
 <% end %>
 <% if !current_user.suggest_owner_guide || !current_user.suggest_service_provider_guide %>

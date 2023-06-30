@@ -3,6 +3,9 @@
     <% if current_user.suggest_owner_guide %>
       <%= render 'guide_owner' %>
     <% end %>
+    <% if current_user.suggest_property_guide %>
+      <%= render 'guide_property' %>
+    <% end %>
     <% if current_user.suggest_service_provider_guide %>
       <%= render 'guide_service_provider' %>
     <% end %>

@@ -26,6 +26,7 @@ class OperationsRoomController < ApplicationController
   def ignore_suggester
     current_user.update(suggest_service_provider_guide: false) if params[:suggester] == 'service_provider'
     current_user.update(suggest_owner_guide: false) if params[:suggester] == 'owner'
+    current_user.update(suggest_property_guide: false) if params[:suggester] == 'property'
     if params[:suggester] == 'both'
       current_user.update(suggest_owner_guide: false,
                           suggest_service_provider_guide: false)

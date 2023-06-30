@@ -1,0 +1,18 @@
+<div class="d-flex flex-column gap-2">
+  <div class="fs-4 fw-bold border-b-1 border-dashed border-slate-400 border-t-1 w-full p-2 d-flex justify-content-between align-items-center">
+    <span>Sell, Rent, Lease property</span>
+    <%= link_to "Not Interested", ignore_suggester_path(suggester: 'property'), class: "text-muted fs-6" %>
+  </div>
+  <div class="p-2">
+    <div class="d-flex align-items-start justify-content-start gap-3" title="Mark as done">
+      <input type="checkbox" name="property" role="button" class="my-1 rounded-md ignore_suggester" id="property"/>
+      <div role="button" class="d-flex flex-column align-items-start justify-content-start gap-2">
+        <div class="fw-bold">List your first property</div>
+        <div>List your BnB, hotel, motel etc for rental, lease or sale here.</div>
+        <div>
+        <%= link_to "Add A Property Listing", new_accomodation_path, class: "bg-green-800 hover:bg-green-400 rounded-md text-white fw-bold p-2" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

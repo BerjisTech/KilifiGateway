@@ -22,9 +22,11 @@ class AccomodationsController < ApplicationController
   # POST /accomodations or /accomodations.json
   def create
     @accomodation = Accomodation.new(accomodation_params)
+    @accomodation.owner_id = Owner.find_or_create_by(user_id: current_user.id).id
 
     respond_to do |format|
       if @accomodation.save
+        current_user.update(suggest_property_guide: false)
         format.html { redirect_to accomodation_url(@accomodation), notice: 'Accomodation was successfully created.' }
         format.json { render :show, status: :created, location: @accomodation }
       else

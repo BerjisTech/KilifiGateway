@@ -47,6 +47,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.boolean :admin, null: false, default: false
       t.boolean :suggest_owner_guide, null: false, default: true
       t.boolean :suggest_service_provider_guide, null: false, default: true
+      t.boolean :suggest_property_guide, null: false, default: true
 
       t.timestamps null: false
     end
