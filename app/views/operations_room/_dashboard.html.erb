@@ -1,1 +1,22 @@
-Dashboard
+<div class="row w-full p-2 my-3">
+  <div class="col-md-9">
+    <div class="w-full d-flex align-items-start justify-content-start gap-2 flex-wrap">
+      <% @action_links.each do |action| %>
+        <% next if action.name == "command_center" %>
+        <%= link_to (action.data_count&.positive? ? action.path : action.get_started_link), class: "backdrop-blur-xl shadow-md bg-slate-50 rounded-md hover:bg-slate-100 p-2 border-1 border-solid border-slate-500 flex-fill min-w-[250px]" do %>
+          <div class="d-flex flex-column gap-2">
+            <p class="fw-bold d-flex align-items-center justify-content-start gap-2"><em class="material-icons"><%= action.icon %></em><%= action.name.gsub('_',' ').upcase%></p>
+            <div>
+              <%= action.data_count&.positive? ? "#{action.data_count} #{action.name.singularize.gsub('_',' ').capitalize}" : "Get started"  %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-3 hidden-xs w-full">
+    <div class="sticky w-full bg-white rounded-md p-2">
+      <div>Notifications</div>
+    </div>
+  </div>
+</div>

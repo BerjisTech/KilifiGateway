@@ -7,6 +7,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable,
          :omniauthable
+  has_one :service_provider, dependent: :destroy
+  has_one :owner, dependent: :destroy
+  has_many :staffs, dependent: :destroy
+  has_many :branches, through: :staffs
+  has_many :stores, through: :branches
+  has_many :products, through: :branches
+  has_many :services, through: :branches
+  has_many :on_demand_services, through: :service_provider
+  has_many :accomodations, through: :owner
 
   class << self
     def fake_records

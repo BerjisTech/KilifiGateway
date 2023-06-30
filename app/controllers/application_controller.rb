@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     'staffs' => 'stores'
   }.freeze
 
-  SKIP_COMMAND_CENTER_ACTIONS = %w[create_default_guest_user set_static_arrays method_arrays
+  SKIP_COMMAND_CENTER_ACTIONS = %w[create_default_guest_user set_static_arrays method_arrays data_count
                                    has_parent has_children setup_command_center_links ignore_suggester].freeze
 
   SKIP_ACTIONS_WITHOUT_OWNER = %w[owners stores branches staffs products services].freeze
@@ -45,10 +45,11 @@ class ApplicationController < ActionController::Base
   end
 
   def setup_command_center_links
+    return if current_user.blank?
     @action_links = []
     user = current_user.nil? ? @guest_user : current_user
-    owner = Owner.where(user_id: user.id).first
-    staff = Staff.where(user_id: user.id).first
+    owner = current_user.owner
+    staff = current_user.staffs
     has_property = owner.present? && Accomodation.find_by(owner_id: owner.id).present?
     service_provider = ServiceProvider.where(user_id: user.id).first
 
@@ -65,6 +66,8 @@ class ApplicationController < ActionController::Base
         has_children: has_children(action),
         has_parent: has_parent(action),
         parent: ACTION_FAMILY[action],
+        data_count: data_count(action, owner),
+        get_started_link: "#{root_url}#{action}/new",
         debug: "Action: #{action}, Icon: #{ACTION_ICONS[action]}"
       )
     end
@@ -73,6 +76,26 @@ class ApplicationController < ActionController::Base
     @service_provider = ServiceProvider.where(user_id: user.id).first
     @staff = Staff.where(user_id: user.id).first
   end
+
+  def data_count(action, owner)
+    case action
+    when 'stores'
+      current_user.stores.count
+    when 'branches'
+      current_user.branches.count
+    when 'products'
+      current_user.products.count
+    when 'services'
+      current_user.services.count
+    when 'on_demand_services'
+      current_user.on_demand_services.count
+    when 'staffs'
+      current_user.staffs.count
+    when 'property'
+      current_user.accomodations.count
+    end
+  end
+
 
   def has_parent(action)
     %w[

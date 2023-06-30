@@ -3,5 +3,7 @@
 class Staff < ApplicationRecord
   belongs_to :user
   belongs_to :branch
-  belongs_to :store
+  has_one :store, through: :branch
+  has_many :products, through: :branch
+  has_many :services, through: :branch
 end
