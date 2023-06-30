@@ -35,7 +35,15 @@
     </p>
     <p class="d-flex flex-fill align-items-start justify-content-start gap-2">
       <strong class="font-medium text-decoration-none material-icons">balcony</strong>:
-      <%= accomodation.balcony %>
+      <strong class="font-medium text-decoration-none material-icons text-<%= accomodation.balcony ? 'green' : 'red' %>-500"><%= accomodation.balcony ? 'check' : 'cancel' %></strong>
+    </p>
+    <p class="d-flex flex-fill align-items-start justify-content-start gap-2">
+      <strong class="font-medium text-decoration-none material-icons">local_parking</strong>:
+      <strong class="font-medium text-decoration-none material-icons text-<%= accomodation.parking ? 'green' : 'red' %>-500"><%= accomodation.parking ? 'check' : 'cancel' %></strong>
+    </p>
+    <p class="d-flex flex-fill align-items-start justify-content-start gap-2">
+      <strong class="font-medium text-decoration-none material-icons">airport_shuttle</strong>:
+      <strong class="font-medium text-decoration-none material-icons text-<%= accomodation.transport ? 'green' : 'red' %>-500"><%= accomodation.transport ? 'check' : 'cancel' %></strong>
     </p>
     <p class="d-flex flex-fill align-items-start justify-content-start gap-2">
       <strong class="font-medium text-decoration-none material-icons">room</strong>:

@@ -5,9 +5,9 @@
 <div id="<%= dom_id accomodation %>" class="w-full">
   <div class="row w-full">
     <div class="col-sm-8 h-full">
-      <div class="d-flex gap-2 flex-wrap p-0">
-        <div class="<%= dom_id accomodation %> flex-fill d-flex align-items-center justify-content-center">
-          <img src="https://picsum.photos/500/300?random=1" class="rounded-lg h-full object-cover" onload="processImage('<%= dom_id accomodation %>', this.src)">
+      <div class="d-flex gap-2 flex-wrap p-0 mt-2">
+        <div class="flex-fill d-flex align-items-center justify-content-center">
+          <img src="https://picsum.photos/500/300?random=1" class="<%= dom_id accomodation %> rounded-lg h-full object-cover" onload="processImage('<%= dom_id accomodation %>', this.src)">
         </div>
         <div>
           <img src="https://picsum.photos/500/300?random=2" class="rounded-lg h-[100px]">
@@ -44,6 +44,32 @@
             <span class="">incl. taxes</span>
           </div>
         </div>
+        <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md">
+          <p class="d-flex flex-fill align-items-start justify-content-start gap-2">
+            <strong class="font-medium text-decoration-none material-icons">bathroom</strong>:
+            <%= accomodation.bathrooms %>
+          </p>
+          <p class="d-flex flex-fill align-items-start justify-content-start gap-2">
+            <strong class="font-medium text-decoration-none material-icons">bed</strong>:
+            <%= accomodation.bedrooms %>
+          </p>
+          <p class="d-flex flex-fill align-items-start justify-content-start gap-2">
+            <strong class="font-medium text-decoration-none material-icons">balcony</strong>:
+            <strong class="font-medium text-decoration-none material-icons text-<%= accomodation.balcony ? 'green' : 'red' %>-500"><%= accomodation.balcony ? 'check' : 'cancel' %></strong>
+          </p>
+          <p class="d-flex flex-fill align-items-start justify-content-start gap-2">
+            <strong class="font-medium text-decoration-none material-icons">local_parking</strong>:
+            <strong class="font-medium text-decoration-none material-icons text-<%= accomodation.parking ? 'green' : 'red' %>-500"><%= accomodation.parking ? 'check' : 'cancel' %></strong>
+          </p>
+          <p class="d-flex flex-fill align-items-start justify-content-start gap-2">
+            <strong class="font-medium text-decoration-none material-icons">airport_shuttle</strong>:
+            <strong class="font-medium text-decoration-none material-icons text-<%= accomodation.transport ? 'green' : 'red' %>-500"><%= accomodation.transport ? 'check' : 'cancel' %></strong>
+          </p>
+          <p class="d-flex flex-fill align-items-start justify-content-start gap-2">
+            <strong class="font-medium text-decoration-none material-icons">room</strong>:
+            <%= accomodation.location[0..40] %>...
+          </p>
+        </div>
         <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md"></div>
         <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md"></div>
         <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md fw-bold text-[12px] text-green-600">
@@ -64,6 +90,14 @@
             <span>ALL DEALS</span>
           </div>
         </div>
+        <a class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md text-decoration-none" href="<%= root_url %>u/<%= user.id %>">
+          <img src='https://picsum.photos/500/300?random=<%= rand(1..10) %>' class="w-[50px] h-[50px] rounded-md bg-blue-400" />
+          <div class="d-flex flex-column align-items-start justify-content-center h-full flex-fill">
+            <span class="text-decoration-none text-slate-800"><%= user.name %></span>
+            <span class="text-decoration-none text-slate-400">View Agent Profile</span>
+          </div>
+          <span class="material-icons">chevron_right</span>
+        </a>
       </div>
     </div>
   </div>
@@ -71,34 +105,15 @@
     <div class="col-sm-8 h-full"></div>
     <div class="col-sm-4 h-full sticky"></div>
   </div>
-  <div>
-    <p class="my-5">
-      <strong class="block font-medium mb-1">Owner:</strong>
-      <%= accomodation.owner_id %>
-    </p>
+  <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 my-5 rounded-md">
+    <% owner.accomodations.limit(5).each_with_index do |accomodation, index| %>
+      <div class="col-sm-3 px-0 py-2 m-0"><%= render partial: 'accomodations/accomodation_condensed', locals: { accomodation: accomodation, index: index } %></div>
+    <% end %>
+  </div>
+  <div class="hidden">
     <p class="my-5">
       <strong class="block font-medium mb-1">Description:</strong>
       <%= accomodation.description %>
-    </p>
-    <p class="my-5">
-      <strong class="block font-medium mb-1">Bathrooms:</strong>
-      <%= accomodation.bathrooms %>
-    </p>
-    <p class="my-5">
-      <strong class="block font-medium mb-1">Bedrooms:</strong>
-      <%= accomodation.bedrooms %>
-    </p>
-    <p class="my-5">
-      <strong class="block font-medium mb-1">Balcony:</strong>
-      <%= accomodation.balcony %>
-    </p>
-    <p class="my-5">
-      <strong class="block font-medium mb-1">Location:</strong>
-      <%= accomodation.location %>
-    </p>
-    <p class="my-5">
-      <strong class="block font-medium mb-1">Name:</strong>
-      <%= accomodation.name %>
     </p>
     <p class="my-5">
       <strong class="block font-medium mb-1">Price:</strong>
@@ -176,46 +191,5 @@
       <strong class="block font-medium mb-1">Cancellation rate:</strong>
       <%= accomodation.cancellation_rate %>
     </p>
-  </div>
-</div>
-<%# From ChatGPT %>
-<div class="bg-white mx-auto max-w-screen-lg shadow-lg rounded-lg overflow-hidden">
-  <div class="md:flex">
-    <div class="md:flex-shrink-0">
-      <% accomodation.images.first(5).each do |image| %>
-        <img class="h-56 w-full object-cover md:w-48" src="<%= image.url %>" alt="<%= accomodation.name %>">
-      <% end %>
-    </div>
-    <div class="p-8">
-      <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"><%= accomodation.location %></div>
-      <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline"><%= accomodation.name %></a>
-      <p class="mt-2 text-gray-500"><%= accomodation.description %></p>
-      <div class="mt-4">
-        <div class="flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-gray-500">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7m-16 0a2 2 0 012-2h12a2 2 0 012 2m-16 0h16"></path>
-          </svg>
-          <p class="ml-2"><%= accomodation.rooms %> Rooms</p>
-        </div>
-        <div class="flex items-center mt-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-gray-500">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 17a4 4 0 01-4-4V5a2 2 0 012-2h12a2 2 0 012 2v1.5M16 17v5m0 0H8m8 0a4 4 0 004-4v-5a4 4 0 00-4-4H8a4 4 0 00-4 4v5a4 4 0 004 4"></path>
-          </svg>
-          <p class="ml-2"><%= accomodation.bathrooms %> Bathrooms</p>
-        </div>
-        <div class="flex items-center mt-2">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-gray-500">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-          </svg>
-          <p class="ml-2"><%= accomodation.guests %> Guests</p>
-        </div>
-      </div>
-      <div class="mt-6">
-        <div class="flex">
-          <p class="text-2xl text-gray-900"><%= number_to_currency(accomodation.price) %> / night</p>
-          <%= button_to 'Reserve', new_reservation_path(property_id: accomodation.id), method: :get, class: 'ml-auto bg-indigo-600 text-white p-2 rounded-lg' %>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
