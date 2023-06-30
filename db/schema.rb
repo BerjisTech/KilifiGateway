@@ -32,6 +32,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_014554) do
     t.integer "bathrooms"
     t.integer "bedrooms"
     t.boolean "balcony"
+    t.boolean "parking"
+    t.boolean "transport"
     t.string "location"
     t.string "name"
     t.float "price"

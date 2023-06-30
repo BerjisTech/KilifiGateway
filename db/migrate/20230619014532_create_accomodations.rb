@@ -8,6 +8,8 @@ class CreateAccomodations < ActiveRecord::Migration[7.0]
       t.integer :bathrooms
       t.integer :bedrooms
       t.boolean :balcony
+      t.boolean :parking
+      t.boolean :transport
       t.string :location
       t.string :name
       t.float :price

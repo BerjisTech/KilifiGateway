@@ -1,147 +1,150 @@
-<%= form_with(model: accomodation, class: "contents") do |form| %>
-  <% if accomodation.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(accomodation.errors.count, "error") %> prohibited this accomodation from being saved:</h2>
-
-      <ul>
-        <% accomodation.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= turbo_frame_tag "post" do %>
+  <%= form_with(model: accomodation, class: "contents") do |form| %>
+    <div class="p-3">
+      <% if accomodation.errors.any? %>
+        <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+          <h2><%= pluralize(accomodation.errors.count, "error") %> prohibited this accomodation from being saved:</h2>
+          <ul>
+            <% accomodation.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="fw-bold fs-3">Property description</div>
+          <hr />
+          <div>Describe your service in detail. Tell your clients as much as you possible can. Use this as a marketing avenue and try getting your potential clients' attention even without any other datails.</div>
+        </div>
+        <div class="col-sm-8">
+          <div class="form-floating">
+            <%= form.text_field :name, class: "form-control", placeholder: "---", required: "required" %>
+            <%= form.label :name %>
+          </div>
+          <div class="my-5">
+            <%= form.label :description %>
+            <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="fw-bold fs-3">Property Details</div>
+          <hr />
+          <div>Describe your service in detail. Tell your clients as much as you possible can. Use this as a marketing avenue and try getting your potential clients' attention even without any other datails.</div>
+        </div>
+        <div class="col-sm-8">
+          <div class="d-flex align-items-center justify-content-center gap-2">
+            <div class="form-floating flex-fill">
+              <%= form.number_field :bathrooms, class: "form-control", placeholder: "---", min: "1", required: "required" %>
+              <%= form.label :bathrooms %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.number_field :bedrooms, class: "form-control", placeholder: "---", min: "1", required: "required" %>
+              <%= form.label :bedrooms %>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-2">
+            <div class="my-5 flex-fill d-flex align-items-start justify-content-start gap-2">
+              <%= form.check_box :balcony, class: "h-5 w-5" %>
+              <%= form.label :balcony %>
+            </div>
+            <div class="my-5 flex-fill d-flex align-items-start justify-content-start gap-2">
+              <%= form.check_box :parking, class: "h-5 w-5" %>
+              <%= form.label :parking %>
+            </div>
+            <div class="my-5 flex-fill d-flex align-items-start justify-content-start gap-2">
+              <%= form.check_box :transport, class: "h-5 w-5" %>
+              <%= form.label :transport %>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-2 my-5">
+            <div class="form-floating flex-fill">
+              <%= form.number_field :max_guests, class: "form-control", placeholder: "-----", min: "1" %>
+              <%= form.label :max_guests %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.number_field :min_stay, class: "form-control", placeholder: "-----", min: "1" %>
+              <%= form.label :min_stay %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.number_field :max_stay, class: "form-control", placeholder: "-----", min: "1" %>
+              <%= form.label :max_stay %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.number_field :guests_included, class: "form-control", placeholder: "-----" %>
+              <%= form.label :guests_included %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.number_field :extra_guest_fee, class: "form-control", placeholder: "-----" %>
+              <%= form.label :extra_guest_fee %>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-2 my-5">
+            <div class="form-floating flex-fill">
+              <%= form.text_field :price, class: "form-control", placeholder: "-------" %>
+              <%= form.label :price %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.text_field :rating, class: "form-control", placeholder: "-------" %>
+              <%= form.label :rating %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.number_field :security_deposit, class: "form-control", placeholder: "-------" %>
+              <%= form.label :security_deposit %>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-2 my-5">
+            <div class="form-floating flex-fill">
+              <%= form.number_field :cleaning_fee, class: "form-control", placeholder: "-------" %>
+              <%= form.label :cleaning_fee %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.number_field :service_fee, class: "form-control", placeholder: "-------" %>
+              <%= form.label :service_fee %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.number_field :host_fee, class: "form-control", placeholder: "-------" %>
+              <%= form.label :host_fee %>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-2 my-5">
+            <div class="form-floating flex-fill">
+              <%= form.number_field :cancellation_policy, class: "form-control", placeholder: "-------" %>
+              <%= form.label :cancellation_policy %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.number_field :cancellation_days, class: "form-control", placeholder: "-------" %>
+              <%= form.label :cancellation_days %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.number_field :cancellation_penalty, class: "form-control", placeholder: "-------" %>
+              <%= form.label :cancellation_penalty %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.number_field :cancellation_rate, class: "form-control", placeholder: "-------" %>
+              <%= form.label :cancellation_rate %>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-2 my-5">
+            <div class="form-floating flex-fill">
+              <%= form.text_field :location, class: "form-control", placeholder: "-------" %>
+              <%= form.label :location %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.text_field :latitude, class: "form-control", placeholder: "-------" %>
+              <%= form.label :latitude %>
+            </div>
+            <div class="form-floating flex-fill">
+              <%= form.text_field :longitude, class: "form-control", placeholder: "-------" %>
+              <%= form.label :longitude %>
+            </div>
+          </div>
+          <%= form.hidden_field :owner_id %>
+          <div class="block text-end">
+            <%= form.submit class: "rounded-lg py-3 px-5 bg-green-800 hover:bg-green-400 text-white inline-block font-medium cursor-pointer" %>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
-
-  <div class="my-5">
-    <%= form.label :owner_id %>
-    <%= form.text_field :owner_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :description %>
-    <%= form.text_area :description, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :bathrooms %>
-    <%= form.number_field :bathrooms, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :bedrooms %>
-    <%= form.number_field :bedrooms, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :balcony %>
-    <%= form.check_box :balcony, class: "block mt-2 h-5 w-5" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :location %>
-    <%= form.text_field :location, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :price %>
-    <%= form.text_field :price, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :rating %>
-    <%= form.text_field :rating, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :amenities %>
-    <%= form.text_field :amenities, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :currency %>
-    <%= form.text_field :currency, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :max_guests %>
-    <%= form.number_field :max_guests, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :min_stay %>
-    <%= form.number_field :min_stay, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :max_stay %>
-    <%= form.number_field :max_stay, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :guests_included %>
-    <%= form.number_field :guests_included, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :extra_guest_fee %>
-    <%= form.number_field :extra_guest_fee, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :cleaning_fee %>
-    <%= form.number_field :cleaning_fee, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :security_deposit %>
-    <%= form.number_field :security_deposit, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :service_fee %>
-    <%= form.number_field :service_fee, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :host_fee %>
-    <%= form.number_field :host_fee, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :cancellation_policy %>
-    <%= form.number_field :cancellation_policy, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :cancellation_days %>
-    <%= form.number_field :cancellation_days, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :cancellation_penalty %>
-    <%= form.number_field :cancellation_penalty, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :cancellation_rate %>
-    <%= form.number_field :cancellation_rate, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
 <% end %>
