@@ -52,8 +52,6 @@ class ApplicationController < ActionController::Base
     has_property = owner.present? && Accomodation.find_by(owner_id: owner.id).present?
     service_provider = ServiceProvider.where(user_id: user.id).first
 
-    puts has_property
-
     OperationsRoomController.action_methods.sort.map do |action|
       next if SKIP_COMMAND_CENTER_ACTIONS.include?(action)
       next if current_user.nil? || (owner.blank? && staff.blank? && SKIP_ACTIONS_WITHOUT_OWNER.include?(action))
