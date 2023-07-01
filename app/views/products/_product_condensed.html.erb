@@ -16,12 +16,26 @@
       <span class="material-icons">store</span>
     </div>
   </div>
-  
   <% if action_name != "show" %>
-    <div class="d-flex">
-      <%= link_to "Buy Now", product, class: "flex-fill rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium d-flex align-items-center justify-content-center text-decoration-none" %>
-      <% if current_user&.id == owner.user_id || current_user&.admin %>
-        <%= link_to 'Edit this product', edit_product_path(product), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="d-flex align-items-center justify-content-center gap-2 mt-2">
+      <div class="d-flex flex-column align-items-start justify-content-start">
+        <span class="<%= 'line-through text-red-600 text-sm' if product.discount.present? %>">$ <%= product.price %></span>
+        <span class="text-green-600 fw-bold">$ <%= product.discount %></span>
+      </div>
+      <% if product.product_variants.blank? %>
+        <span class="position-relative flex-fill rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium d-flex align-items-center justify-content-center text-decoration-none">
+          <span>Buy Now</span>
+          <% if product.on_sale %>
+            <span class="absolute top-0 right-0 mt-2 mr-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs">On Sale</span>
+          <% end %>
+        </span>
+      <% else %>
+        <%= link_to product, class: "position-relative flex-fill rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium d-flex align-items-center justify-content-center text-decoration-none" do %>
+          <span>Customize</span>
+          <% if product.on_sale %>
+            <span class="absolute top-0 right-0 mt-2 mr-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs">On Sale</span>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
   <% end %>

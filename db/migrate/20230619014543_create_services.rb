@@ -10,6 +10,16 @@ class CreateServices < ActiveRecord::Migration[7.0]
       t.string :service_type
       t.string :service_category
       t.string :service_sub_category
+      t.string :sku
+      t.float :price
+      t.float :discount
+      t.float :tax
+      t.boolean :featured
+      t.boolean :best_seller
+      t.boolean :new_arrival
+      t.boolean :on_display
+      t.boolean :on_sale
+      t.boolean :on_demand
 
       t.timestamps
     end

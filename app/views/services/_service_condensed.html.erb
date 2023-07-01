@@ -17,11 +17,12 @@
     </div>
   </div>
   <% if action_name != "show" %>
-    <div class="d-flex">
+    <div class="d-flex align-items-center justify-content-center gap-2 mt-2">
+      <div class="d-flex flex-column align-items-start justify-content-start">
+        <span class="<%= 'line-through text-red-600 text-sm' if service.discount.present? %>">$ <%= service.price %></span>
+        <span class="text-green-600 fw-bold">$ <%= service.discount %></span>
+      </div>
       <%= link_to "Request Service", service, class: "flex-fill rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium d-flex align-items-center justify-content-center text-decoration-none" %>
-      <% if current_user&.id == owner.user_id || current_user&.admin %>
-        <%= link_to 'Edit this service', edit_service_path(service), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-      <% end %>
     </div>
   <% end %>
 </div>

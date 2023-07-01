@@ -285,6 +285,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_19_014554) do
     t.string "service_type"
     t.string "service_category"
     t.string "service_sub_category"
+    t.string "sku"
+    t.float "price"
+    t.float "discount"
+    t.float "tax"
+    t.boolean "featured"
+    t.boolean "best_seller"
+    t.boolean "new_arrival"
+    t.boolean "on_display"
+    t.boolean "on_sale"
+    t.boolean "on_demand"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["branch_id"], name: "index_services_on_branch_id"

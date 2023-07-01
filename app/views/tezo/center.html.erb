@@ -30,7 +30,7 @@
   <% end %>
 </div>
 <div class="row m-0 p-0 h-full" role="button" id="product">
-  <% (Product.limit(2) + Service.limit(2)).shuffle.each_with_index do |item, index| %>
+  <% (Product.where(featured: true).limit(2) + Service.limit(2)).shuffle.each_with_index do |item, index| %>
     <% if item.is_a?(Product) %>
       <div class="col-sm-3 p-0 m-0"><%= render partial: 'products/product_condensed', locals: { product: item, index: index } %></div>
     <% elsif item.is_a?(Service) %>
