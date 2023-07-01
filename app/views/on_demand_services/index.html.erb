@@ -2,13 +2,9 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
-
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">On demand services</h1>
-    <%= link_to 'New on demand service', new_on_demand_service_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-  </div>
-
-  <div id="on_demand_services" class="min-w-full">
-    <%= render @on_demand_services %>
+  <div id="on_demand_services" class="d-flex flex-wrap min-w-full p-3">
+    <% @on_demand_services.each_with_index do |on_demand_service, index| %>
+      <div class="col-sm-3 p-0 m-0"><%= render partial: 'on_demand_services/on_demand_service_condensed', locals: { on_demand_service: on_demand_service, index: index } %></div>
+    <% end %>
   </div>
 </div>
