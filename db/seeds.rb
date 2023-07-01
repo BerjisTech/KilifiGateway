@@ -24,61 +24,61 @@ end
                           phone_number: Faker::PhoneNumber.phone_number, email_verified: Faker::Boolean.boolean, phone_number_verified: Faker::Boolean.boolean, available: Faker::Boolean.boolean, online: Faker::Boolean.boolean, average_rating: Faker::Number.decimal(l_digits: 2), number_of_ratings: Faker::Number.number(digits: 2), currency: Faker::Currency.code, bio: Faker::Lorem.paragraph, location: Faker::Address.full_address, jobs_done: Faker::Number.decimal(l_digits: 2), total_earnings: Faker::Number.decimal(l_digits: 2))
 end
 
-10.times do
-  Accomodation.create!(owner: Owner.all.sample, description: Faker::Lorem.paragraph,
+Owner.all.each do |owner|
+  Accomodation.create!(owner: owner, description: Faker::Lorem.paragraph,
                        bathrooms: Faker::Number.number(digits: 1), bedrooms: Faker::Number.number(digits: 1), balcony: Faker::Boolean.boolean, location: Faker::Address.full_address, name: Faker::Lorem.word, price: Faker::Number.decimal(l_digits: 2), rating: Faker::Number.decimal(l_digits: 2), latitude: Faker::Address.latitude, longitude: Faker::Address.longitude, amenities: Faker::Lorem.paragraph, currency: Faker::Currency.code, max_guests: Faker::Number.number(digits: 1), min_stay: Faker::Number.number(digits: 1), max_stay: Faker::Number.number(digits: 1), guests_included: Faker::Number.number(digits: 1), extra_guest_fee: Faker::Number.number(digits: 1), cleaning_fee: Faker::Number.number(digits: 1), security_deposit: Faker::Number.number(digits: 1), service_fee: Faker::Number.number(digits: 1), host_fee: Faker::Number.number(digits: 1), cancellation_policy: Faker::Number.number(digits: 1), cancellation_days: Faker::Number.number(digits: 1), cancellation_penalty: Faker::Number.number(digits: 1), cancellation_rate: Faker::Number.number(digits: 1))
 end
 
-10.times do
-  Store.create!(owner: Owner.all.sample, name: Faker::Lorem.word, description: Faker::Lorem.paragraph,
+Owner.all.each do |owner|
+  Store.create!(owner: owner, name: Faker::Lorem.word, description: Faker::Lorem.paragraph,
                 location: Faker::Address.full_address, open_time: Faker::Time.forward(days: 1, period: :morning), close_time: Faker::Time.forward(days: 1, period: :evening), open_weekends: Faker::Boolean.boolean, open_public_holidays: Faker::Boolean.boolean, open_24hrs: Faker::Boolean.boolean, open_24hrs_weekends: Faker::Boolean.boolean)
 end
 
-10.times do
-  Branch.create!(store: Store.all.sample, location: Faker::Address.full_address,
+Store.all.each do |store|
+  Branch.create!(store: store, location: Faker::Address.full_address,
                  open_time: Faker::Time.forward(days: 1, period: :morning), close_time: Faker::Time.forward(days: 1, period: :evening), open_weekends: Faker::Boolean.boolean, open_public_holidays: Faker::Boolean.boolean, open_24hrs: Faker::Boolean.boolean, open_24hrs_weekends: Faker::Boolean.boolean)
 end
 
-10.times do
-  Staff.create!(user: User.where.not(id: sombo.id).sample, branch: Branch.all.sample, store: Store.all.sample,
+Branch.all.each do |branch|
+  Staff.create!(user: User.where.not(id: sombo.id).sample, branch: branch, store_id: branch.store.id,
                 date_joined: Faker::Date.backward(days: 14), date_left: Faker::Date.backward(days: 14), staff_type: Faker::Lorem.word, staff_category: Faker::Lorem.word, staff_sub_category: Faker::Lorem.word, staff_status: Faker::Lorem.word, staff_role: Faker::Lorem.word, staff_position: Faker::Lorem.word, staff_department: Faker::Lorem.word, staff_designation: Faker::Lorem.word)
 end
 
-10.times do
-  StoreContact.create!(store: Store.all.sample, branch: Branch.all.sample, contact_info: Faker::Lorem.paragraph)
+Branch.all.each do |branch|
+  StoreContact.create!(store_id: branch.store.id, branch: branch, contact_info: Faker::Lorem.paragraph)
 end
 
-10.times do
-  Product.create!(store: Store.all.sample, branch: Branch.all.sample, name: Faker::Lorem.word,
+Branch.all.each do |branch|
+  Product.create!(store_id: branch.store.id, branch: branch, name: Faker::Lorem.word,
                   description: Faker::Lorem.paragraph, product_type: Faker::Lorem.word, product_category: Faker::Lorem.word, product_sub_category: Faker::Lorem.word, color: Faker::Color.color_name, size: Faker::Lorem.word, weight: Faker::Number.decimal(l_digits: 2), weight_unit: Faker::Lorem.word, dimension: Faker::Number.decimal(l_digits: 2), dimension_unit: Faker::Lorem.word, sku: Faker::Lorem.word, barcode: Faker::Lorem.word, manufacturer: Faker::Lorem.word, brand: Faker::Lorem.word, model: Faker::Lorem.word, origin: Faker::Lorem.word, condition: Faker::Lorem.word, condition_note: Faker::Lorem.paragraph, warranty: Faker::Boolean.boolean, warranty_period: Faker::Number.number(digits: 1), warranty_policy: Faker::Lorem.paragraph, return_policy: Faker::Lorem.paragraph, return_period: Faker::Number.number(digits: 1), price: Faker::Number.decimal(l_digits: 2), discount: Faker::Number.decimal(l_digits: 2), tax: Faker::Number.decimal(l_digits: 2), shipping_fee: Faker::Number.decimal(l_digits: 2), shipping_discount: Faker::Number.decimal(l_digits: 2), shipping_discount_price: Faker::Number.decimal(l_digits: 2), shipping_tax: Faker::Number.decimal(l_digits: 2), shipping_weight: Faker::Number.decimal(l_digits: 2), shipping_weight_unit: Faker::Lorem.word, shipping_dimension: Faker::Number.decimal(l_digits: 2), shipping_dimension_unit: Faker::Lorem.word, shipping_distance: Faker::Number.decimal(l_digits: 2), shipping_distance_unit: Faker::Lorem.word, shipping_duration: Faker::Number.decimal(l_digits: 2), featured: Faker::Boolean.boolean, best_seller: Faker::Boolean.boolean, new_arrival: Faker::Boolean.boolean, on_display: Faker::Boolean.boolean, on_sale: Faker::Boolean.boolean, on_auction: Faker::Boolean.boolean, on_rent: Faker::Boolean.boolean, on_demand: Faker::Boolean.boolean, on_pre_order: Faker::Boolean.boolean)
 end
 
-10.times do
-  ProductVariant.create!(product: Product.all.sample, name: Faker::Lorem.word, description: Faker::Lorem.paragraph,
+Product.all.each do |product|
+  ProductVariant.create!(product: product, name: Faker::Lorem.word, description: Faker::Lorem.paragraph,
                          color: Faker::Color.color_name, size: Faker::Lorem.word, weight: Faker::Number.decimal(l_digits: 2), weight_unit: Faker::Lorem.word, dimension: Faker::Number.decimal(l_digits: 2), dimension_unit: Faker::Lorem.word, sku: Faker::Lorem.word, barcode: Faker::Lorem.word, manufacturer: Faker::Lorem.word, brand: Faker::Lorem.word, model: Faker::Lorem.word, origin: Faker::Lorem.word, condition: Faker::Lorem.word, condition_note: Faker::Lorem.paragraph, warranty: Faker::Boolean.boolean, warranty_period: Faker::Number.number(digits: 1), warranty_policy: Faker::Lorem.paragraph, return_policy: Faker::Lorem.paragraph, return_period: Faker::Number.number(digits: 1), price: Faker::Number.decimal(l_digits: 2), discount: Faker::Number.decimal(l_digits: 2), tax: Faker::Number.decimal(l_digits: 2), shipping_fee: Faker::Number.decimal(l_digits: 2), shipping_discount: Faker::Number.decimal(l_digits: 2), shipping_discount_price: Faker::Number.decimal(l_digits: 2), shipping_tax: Faker::Number.decimal(l_digits: 2), shipping_weight: Faker::Number.decimal(l_digits: 2), shipping_weight_unit: Faker::Lorem.word, shipping_dimension: Faker::Number.decimal(l_digits: 2), shipping_dimension_unit: Faker::Lorem.word, shipping_distance: Faker::Number.decimal(l_digits: 2), shipping_distance_unit: Faker::Lorem.word, shipping_duration: Faker::Number.decimal(l_digits: 2), featured: Faker::Boolean.boolean, best_seller: Faker::Boolean.boolean, new_arrival: Faker::Boolean.boolean, on_display: Faker::Boolean.boolean, on_sale: Faker::Boolean.boolean, on_auction: Faker::Boolean.boolean, on_rent: Faker::Boolean.boolean, on_demand: Faker::Boolean.boolean, on_pre_order: Faker::Boolean.boolean)
 end
 
-10.times do
-  Service.create!(store: Store.all.sample, branch: Branch.all.sample, name: Faker::Lorem.word,
+Branch.all.each do |branch|
+  Service.create!(store_id: branch.store.id, branch: branch, name: Faker::Lorem.word,
                   description: Faker::Lorem.paragraph, service_type: Faker::Lorem.word, service_category: Faker::Lorem.word, service_sub_category: Faker::Lorem.word)
 end
 
-10.times do
-  ServiceVariant.create!(service: Service.all.sample, name: Faker::Lorem.word, description: Faker::Lorem.paragraph)
+Service.all.each do |service|
+  ServiceVariant.create!(service: service, name: Faker::Lorem.word, description: Faker::Lorem.paragraph)
 end
 
-10.times do
-  OnDemandService.create!(service_provider: ServiceProvider.all.sample, name: Faker::Lorem.word,
-                          description: Faker::Lorem.paragraph, service_type: Faker::Lorem.word, service_category: Faker::Lorem.word, service_sub_category: Faker::Lorem.word, duration: Faker::Number.decimal(l_digits: 2), duration_unit: Faker::Lorem.word, distance: Faker::Number.decimal(l_digits: 2), distance_unit: Faker::Lorem.word, price: Faker::Number.decimal(l_digits: 2), discount: Faker::Number.decimal(l_digits: 2), tax: Faker::Number.decimal(l_digits: 2))
+ServiceProvider.all.each do |service_provider|
+  OnDemandService.create!(service_provider: service_provider, name: Faker::Lorem.word,
+                          description: Faker::Lorem.paragraph, service_type: Faker::Lorem.word, service_category: Faker::Lorem.word, service_sub_category: Faker::Lorem.word, duration: Faker::Number.decimal(l_digits: 2), duration_unit: Faker::Lorem.word, distance: Faker::Number.decimal(l_digits: 2), distance_unit: Faker::Lorem.word, price: Faker::Number.decimal(l_digits: 2), discount: Faker::Number.decimal(l_digits: 2), tax: Faker::Number.decimal(l_digits: 2), price_rate: Faker::Lorem.word, rating: Faker::Number.decimal(l_digits: 2), rating_count: Faker::Number.number(digits: 1), is_active: Faker::Boolean.boolean, is_deleted: Faker::Boolean.boolean, is_featured: Faker::Boolean.boolean, is_popular: Faker::Boolean.boolean, is_new: Faker::Boolean.boolean, is_recommended: Faker::Boolean.boolean, is_verified: Faker::Boolean.boolean, is_visible: Faker::Boolean.boolean, is_available: Faker::Boolean.boolean)
 end
 
-10.times do
-  Wallet.create!(user: User.where.not(id: sombo.id).sample, currency: Faker::Currency.code,
+User.all.each do |user|
+  Wallet.create!(user: user, currency: Faker::Currency.code,
                  amount: Faker::Number.decimal(l_digits: 2), conversion_rate: Faker::Number.decimal(l_digits: 2))
 end
 
-10.times do
-  Transaction.create!(wallet: Wallet.all.sample, amount: Faker::Number.number(digits: 3),
+Wallet.all.each do |wallet|
+  Transaction.create!(wallet: wallet, amount: Faker::Number.number(digits: 3),
                       fees: Faker::Number.number(digits: 3), conversion_rate: Faker::Number.decimal(l_digits: 2), details: Faker::Lorem.paragraph, transaction_type: Faker::Lorem.word, transaction_category: Faker::Lorem.word, transaction_sub_category: Faker::Lorem.word, transaction_status: Faker::Lorem.word, transaction_mode: Faker::Lorem.word, transaction_method: Faker::Lorem.word)
 end
 
@@ -92,7 +92,7 @@ end
                              location: Faker::Address.full_address, address: Faker::Address.full_address, city: Faker::Address.city, state: Faker::Address.state, country: Faker::Address.country, pincode: Faker::Address.zip_code, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, website: Faker::Internet.url, contact: Faker::Lorem.paragraph)
 end
 
-10.times do
-  Search.create!(term: Faker::Lorem.word, category: Faker::Lorem.word, user: User.where.not(id: sombo.id).sample,
+User.all.each do |user|
+  Search.create!(term: Faker::Lorem.word, category: Faker::Lorem.word, user: user,
                  ip: Faker::Internet.ip_v4_address, location: Faker::Address.full_address, referer: Faker::Internet.url)
 end

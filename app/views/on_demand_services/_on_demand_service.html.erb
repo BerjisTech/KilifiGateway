@@ -1,69 +1,93 @@
-<div id="<%= dom_id on_demand_service %>">
+<% 
+  service_provider = on_demand_service.service_provider
+%>
+<div class="row" id="<%= dom_id on_demand_service %>">
+  <div class="col-sm-8"></div>
+  <div class="col-sm-4">
+    <div class="d-flex algin-items-center justify-content-start w-full">
+      <div class="flex-fill d-flex flex-column">
+        <span class="fs-3 text-slate-900"><%= service_provider.user.name %></span>
+        <span>
+          <% avg_rating = ((on_demand_service.rating.to_f/on_demand_service.rating_count) * 100).clamp(0,5) %>
+          <% avg_rating.times do %>
+            <span class="material-icons text-orange-600">star</span>
+          <% end %>
+        </span>
+      </div>
+      <div>
+        <span class="text-orange-600 fs-3 fw-bold">$<%= on_demand_service.price %></span>/<%= on_demand_service.price_rate %>
+      </div>
+    </div>
+    <div class="my-2">
+      <span>Select Date</span>
+      <div class="relative">
+        <input type="date" id="date-picker" placeholder="Select a date" class="w-full px-4 py-2 pr-8 rounded-lg bg-green-100 text-green-900 focus:outline-none focus:bg-white focus:ring-2 focus:ring-green-500 focus:border-green-500">
+        <div class="absolute top-0 right-0 px-3 py-2">
+          <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-start gap-2">
+      <button class="material-icons bg-green-600 hover:bg-green-400 text-slate-50 p-3 rounded-md">chat</button>
+      <button class="flex-fill bg-orange-600 hover:bg-orange-400 text-slate-50 fw-bold p-3 rounded-md">Book Now</button>
+    </div>
+  </div>
+</div>
+<div style="display: none">
   <p class="my-5">
     <strong class="block font-medium mb-1">Service provider:</strong>
     <%= on_demand_service.service_provider_id %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
     <%= on_demand_service.name %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Description:</strong>
     <%= on_demand_service.description %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Service type:</strong>
     <%= on_demand_service.service_type %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Service category:</strong>
     <%= on_demand_service.service_category %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Service sub category:</strong>
     <%= on_demand_service.service_sub_category %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Duration:</strong>
     <%= on_demand_service.duration %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Duration unit:</strong>
     <%= on_demand_service.duration_unit %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Distance:</strong>
     <%= on_demand_service.distance %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Distance unit:</strong>
     <%= on_demand_service.distance_unit %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Price:</strong>
     <%= on_demand_service.price %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Discount:</strong>
     <%= on_demand_service.discount %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Tax:</strong>
     <%= on_demand_service.tax %>
   </p>
-
   <% if action_name != "show" %>
     <%= link_to "Show this on demand service", on_demand_service, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this on demand service', edit_on_demand_service_path(on_demand_service), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
