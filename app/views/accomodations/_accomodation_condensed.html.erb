@@ -3,7 +3,7 @@
   user = owner.user
 %>
 <div class="d-flex flex-column h-full m-1 bg-slate-100 rounded-md" id="<%= dom_id accomodation %>">
-  <div class="<%= dom_id accomodation %> rounded-t-md d-flex position-relative align-items-center justify-content-center w-full  h-[250px] bg-center bg-no-repeat" style="background: url('https://picsum.photos/500/300?random=<%= rand(1..10) %>')">
+  <div class="<%= dom_id accomodation %> rounded-t-md d-flex position-relative align-items-center justify-content-center w-full h-[250px]" style="background: url('https://picsum.photos/500/300?random=<%= rand(1..10) %>') center / cover no-repeat;">
     <span class="position-absolute top-0 start-0 material-icons bg-slate-100/90 rounded-md p-2 m-1">bookmark</span>
     <span class="position-absolute top-0 end-0 material-icons bg-slate-100/90 rounded-md p-2 m-1">search</span>
     <div class="position-absolute text-white bottom-0 rounded-md p-2 d-flex align-items-center justify-content-center w-full">
