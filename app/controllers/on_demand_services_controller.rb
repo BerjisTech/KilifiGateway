@@ -29,7 +29,8 @@ class OnDemandServicesController < ApplicationController
       if @on_demand_service.save
         current_user.update(suggest_service_provider_guide: false)
         format.html do
-          redirect_to "#{root_url}/operations_room/on_demand_services", notice: 'On demand service was successfully created.'
+          redirect_to "#{root_url}/operations_room/on_demand_services",
+                      notice: 'On demand service was successfully created.'
         end
         format.json { render :show, status: :created, location: @on_demand_service }
       else

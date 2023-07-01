@@ -29,7 +29,8 @@ class User < ApplicationRecord
     end
 
     def debug_reset_suggest
-      User.where(email: 'bo.kouru@gmail.com').update_all(suggest_service_provider_guide: true, suggest_owner_guide: true, suggest_property_guide: true)
+      User.where(email: 'bo.kouru@gmail.com').update_all(suggest_service_provider_guide: true,
+                                                         suggest_owner_guide: true, suggest_property_guide: true)
     end
   end
 end

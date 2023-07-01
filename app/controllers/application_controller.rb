@@ -46,6 +46,7 @@ class ApplicationController < ActionController::Base
 
   def setup_command_center_links
     return if current_user.blank?
+
     @action_links = []
     user = current_user.nil? ? @guest_user : current_user
     owner = current_user.owner
@@ -77,7 +78,7 @@ class ApplicationController < ActionController::Base
     @staff = Staff.where(user_id: user.id).first
   end
 
-  def data_count(action, owner)
+  def data_count(action, _owner)
     case action
     when 'stores'
       current_user.stores.count
@@ -95,7 +96,6 @@ class ApplicationController < ActionController::Base
       current_user.accomodations.count
     end
   end
-
 
   def has_parent(action)
     %w[

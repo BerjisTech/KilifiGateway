@@ -6,5 +6,4 @@ class Product < ApplicationRecord
   has_one :owner, through: :store
   has_one :user, through: :owner
   has_many :product_variants
-
 end
