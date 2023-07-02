@@ -1,7 +1,7 @@
 <div class="row w-full p-2 my-3">
   <div class="col-md-9">
     <div class="w-full d-flex align-items-start justify-content-start gap-2 flex-wrap">
-      <% @action_links.each do |action| %>
+      <% @action_links.sort{ |action| action.action_level }.each do |action| %>
         <% next if action.name == "command_center" %>
         <%= link_to (action.data_count&.positive? ? action.path : action.get_started_link), class: "backdrop-blur-xl shadow-md bg-slate-50 rounded-md hover:bg-slate-100 p-2 border-1 border-solid border-slate-500 flex-fill min-w-[250px]" do %>
           <div class="d-flex flex-column gap-2">

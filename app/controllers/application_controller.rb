@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   SKIP_COMMAND_CENTER_ACTIONS = %w[create_default_guest_user set_static_arrays method_arrays data_count
                                    has_parent has_children setup_command_center_links ignore_suggester
-                                   setup_command_center].freeze
+                                   setup_command_center get_action_level].freeze
 
   SKIP_ACTIONS_WITHOUT_OWNER = %w[owners stores branches staffs products services].freeze
   SKIP_ACTIONS_WITHOUT_PROPERTY = %w[property].freeze
@@ -67,6 +67,7 @@ class ApplicationController < ActionController::Base
         icon: ACTION_ICONS[action],
         has_children: has_children(action),
         has_parent: has_parent(action),
+        action_level: get_action_level(action),
         parent: ACTION_FAMILY[action],
         data_count: data_count(action, owner, service_provider),
         get_started_link: "#{root_url}#{action}/new",
@@ -109,5 +110,17 @@ class ApplicationController < ActionController::Base
 
   def has_children(action)
     %w[stores branches].include? action
+  end
+
+  def get_action_level(action)
+    if has_parent(action) && has_children(action)
+      2
+    elsif has_parent(action) && !has_children(action)
+      3
+    elsif !has_parent(action) && has_children(action)
+      1
+    else
+      4
+    end
   end
 end
