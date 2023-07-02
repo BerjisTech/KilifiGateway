@@ -70,7 +70,6 @@ class ProductVariantsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def product_variant_params
-    params.require(:product_variant).permit(:product_id, :name, :description, :color, :size, :weight, :weight_unit,
-                                            :dimension, :dimension_unit, :sku, :barcode, :manufacturer, :brand, :model, :origin, :condition, :condition_note, :warranty, :warranty_period, :warranty_policy, :return_policy, :return_period, :price, :discount, :tax, :shipping_fee, :shipping_discount, :shipping_discount_price, :shipping_tax, :shipping_weight, :shipping_weight_unit, :shipping_dimension, :shipping_dimension_unit, :shipping_distance, :shipping_distance_unit, :shipping_duration, :featured, :best_seller, :new_arrival, :on_display, :on_sale, :on_auction, :on_rent, :on_demand, :on_pre_order)
+    params.require(:product_variant).permit(:product_id, :name, :descritpion, :variant_type, :price, :discount, :variant_select_choices, :best_seller, :on_demand, :on_sale)
   end
 end

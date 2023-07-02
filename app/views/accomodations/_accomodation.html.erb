@@ -27,10 +27,10 @@
         <% end %>
         <div class="fw-bold fs-3"><%= accomodation.name.capitalize %></div>
         <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md">
-          <div class="fw-bold fw-bold text-green-600"><%= accomodation.rating %></div>
+          <div class="fw-bold fw-bold text-green-600"><%= ((accomodation.rating/accomodation.rating_count)*100).clamp(0,5) %></div>
           <div class="d-flex flex-column flex-fill text-[12px]">
             <div>Pleasant</div>
-            <div>2000 REVIEWS</div>
+            <div><%= accomodation.rating_count %> REVIEWS</div>
           </div>
           <div class="bg-slate-300 rounded-md p-2 fw-bold text-slate-600">More</div>
         </div>

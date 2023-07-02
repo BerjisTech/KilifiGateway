@@ -1,179 +1,54 @@
+<% variant_choices = product_variant.variant_select_choices[0] %>
 <div class="position-relative d-flex align-items-start justify-content-start flex-wrap gap-2 flex-column" id="<%= dom_id product_variant %>">
   <div class="d-flex align-items-center justify-content-between w-full bg-white gap-2 p-2">
     <div class="flex-fill d-flex align-items-center justify-content-start gap-2">
-      <input id="<%= product_variant %>" name="<%= product_variant %>" type="checkbox" />
-      <label for="<%= product_variant %>">
-        <span class="fw-bold"><%= product_variant.name.capitalize %></span>
-      </label>
+      <span class="fw-bold"><%= product_variant.name.capitalize %></span>
     </div>
-    <div class="flex-fill d-flex align-items-center justify-content-between w-full bg-white gap-2 p-2" role="button" onclick="toggleClass(document.querySelector(`#<%= dom_id product_variant %> .details`), 'hidden')">
-      <div class="flex-fill">$<%= product_variant.price %></div>
-      <div class="d-flex align-items-center justify-content-center gap-1">
-        <% if product_variant.best_seller %>
-          <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs">Best seller</span>
+    <div class="flex-fill d-flex align-items-center justify-content-between w-full bg-white gap-2 p-2" role="button">
+      <div class="flex-fill">
+        <% case product_variant.variant_type %>
+        <% when 'select' %>
+        <%= select_tag 'product_variant', options_for_select(variant_choices.map { |choice| [choice["name"], choice.to_json] }) %>
+        <% when 'checkbox_group' %>
+        <% variant_choices.each do |choice| %>
+          <%= check_box_tag 'product_variant[]', choice, false, id: choice[:name] %>
+          <%= label_tag choice[:name] %>
         <% end %>
-        <% if product_variant.on_sale %>
-          <span class="bg-red-500 text-white px-2 py-1 rounded-full text-xs">On Sale</span>
+        <% when 'textarea' %>
+        <%= text_area_tag 'product_variant' %>
+        <% when 'checkbox' %>
+        <%= check_box_tag 'product_variant' %>
+        <% when 'radio' %>
+        <% variant_choices.each do |choice| %>
+          <%= radio_button_tag 'product_variant', choice, false, id: choice[:name] %>
+          <%= label_tag choice[:name] %>
         <% end %>
-        <% if product_variant.on_demand %>
-          <span class="bg-red-500 text-white px-2 py-1 rounded-full text-xs">On Demand</span>
-        <% end %>
-      </div>
-      <div class="">
-        <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </div>
+        <% when 'number' %>
+        <%= number_field_tag 'product_variant' %>
+        <% when 'text' %>
+        <%= text_field_tag 'product_variant' %>
+        <% when 'file' %>
+        <%= file_field_tag 'product_variant' %>
+        <% when 'date' %>
+        <%= date_field_tag 'product_variant' %>
+        <% when 'swatch' %>
+        <%= color_field_tag 'product_variant' %>
+      <% else %>
+        <!-- Undefined variant type -->
+      <% end %>
+    </div>
+    <div class="">$<%= product_variant.price %></div>
+    <div class="d-flex align-items-center justify-content-center gap-1">
+      <% if product_variant.best_seller %>
+        <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs">Best seller</span>
+      <% end %>
+      <% if product_variant.on_sale %>
+        <span class="bg-red-500 text-white px-2 py-1 rounded-full text-xs">On Sale</span>
+      <% end %>
+      <% if product_variant.on_demand %>
+        <span class="bg-red-500 text-white px-2 py-1 rounded-full text-xs">On Demand</span>
+      <% end %>
     </div>
   </div>
-  <div class="details hidden">
-    <p class="d-flex ">
-      <strong class="block font-medium mb-1">Description:</strong>
-      <%= product_variant.description %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Color:</strong>
-      <span style="color: <%= product_variant.color %>"><%= product_variant.color %></span>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Size:</strong>
-      <%= product_variant.size %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Weight:</strong>
-      <%= product_variant.weight %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Weight unit:</strong>
-      <%= product_variant.weight_unit %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Dimension:</strong>
-      <%= product_variant.dimension %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Dimension unit:</strong>
-      <%= product_variant.dimension_unit %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Sku:</strong>
-      <%= product_variant.sku %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Barcode:</strong>
-      <%= product_variant.barcode %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Manufacturer:</strong>
-      <%= product_variant.manufacturer %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Brand:</strong>
-      <%= product_variant.brand %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Model:</strong>
-      <%= product_variant.model %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Condition:</strong>
-      <%= product_variant.condition %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Condition note:</strong>
-      <%= product_variant.condition_note %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Warranty:</strong>
-      <%= product_variant.warranty %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Warranty period:</strong>
-      <%= product_variant.warranty_period %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Warranty policy:</strong>
-      <%= product_variant.warranty_policy %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Return policy:</strong>
-      <%= product_variant.return_policy %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Return period:</strong>
-      <%= product_variant.return_period %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Price:</strong>
-      <%= product_variant.price %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Discount:</strong>
-      <%= product_variant.discount %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Tax:</strong>
-      <%= product_variant.tax %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Shipping fee:</strong>
-      <%= product_variant.shipping_fee %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Shipping discount:</strong>
-      <%= product_variant.shipping_discount %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Shipping discount price:</strong>
-      <%= product_variant.shipping_discount_price %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Shipping tax:</strong>
-      <%= product_variant.shipping_tax %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Shipping weight:</strong>
-      <%= product_variant.shipping_weight %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Shipping weight unit:</strong>
-      <%= product_variant.shipping_weight_unit %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Shipping dimension:</strong>
-      <%= product_variant.shipping_dimension %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Shipping dimension unit:</strong>
-      <%= product_variant.shipping_dimension_unit %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Shipping distance:</strong>
-      <%= product_variant.shipping_distance %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Shipping distance unit:</strong>
-      <%= product_variant.shipping_distance_unit %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Shipping duration:</strong>
-      <%= product_variant.shipping_duration %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">Featured:</strong>
-      <%= product_variant.featured %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">New arrival:</strong>
-      <%= product_variant.new_arrival %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">On auction:</strong>
-      <%= product_variant.on_auction %>
-    </p>
-    <p class="d-flex">
-      <strong class="block font-medium mb-1">On rent:</strong>
-      <%= product_variant.on_rent %>
-    </p>
-  </div>
+</div>
 </div>

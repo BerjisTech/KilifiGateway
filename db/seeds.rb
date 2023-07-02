@@ -50,6 +50,7 @@ Owner.all.each do |owner|
                        name: Faker::Lorem.word,
                        price: Faker::Number.decimal(l_digits: 2),
                        rating: Faker::Number.decimal(l_digits: 2),
+                       rating_count: Faker::Number.number(digits: 1),
                        latitude: Faker::Address.latitude,
                        longitude: Faker::Address.longitude,
                        amenities: Faker::Lorem.paragraph,
@@ -159,49 +160,18 @@ end
 Product.all.each do |product|
   ProductVariant.create!(product:,
                          name: Faker::Lorem.word,
-                         description: Faker::Lorem.paragraph,
-                         color: Faker::Color.color_name,
-                         size: Faker::Lorem.word,
-                         weight: Faker::Number.decimal(l_digits: 2),
-                         weight_unit: Faker::Lorem.word,
-                         dimension: Faker::Number.decimal(l_digits: 2),
-                         dimension_unit: Faker::Lorem.word,
-                         sku: Faker::Lorem.word,
-                         barcode: Faker::Lorem.word,
-                         manufacturer: Faker::Lorem.word,
-                         brand: Faker::Lorem.word,
-                         model: Faker::Lorem.word,
-                         origin: Faker::Lorem.word,
-                         condition: Faker::Lorem.word,
-                         condition_note: Faker::Lorem.paragraph,
-                         warranty: Faker::Boolean.boolean,
-                         warranty_period: Faker::Number.number(digits: 1),
-                         warranty_policy: Faker::Lorem.paragraph,
-                         return_policy: Faker::Lorem.paragraph,
-                         return_period: Faker::Number.number(digits: 1),
                          price: Faker::Number.decimal(l_digits: 2),
                          discount: Faker::Number.decimal(l_digits: 2),
-                         tax: Faker::Number.decimal(l_digits: 2),
-                         shipping_fee: Faker::Number.decimal(l_digits: 2),
-                         shipping_discount: Faker::Number.decimal(l_digits: 2),
-                         shipping_discount_price: Faker::Number.decimal(l_digits: 2),
-                         shipping_tax: Faker::Number.decimal(l_digits: 2),
-                         shipping_weight: Faker::Number.decimal(l_digits: 2),
-                         shipping_weight_unit: Faker::Lorem.word,
-                         shipping_dimension: Faker::Number.decimal(l_digits: 2),
-                         shipping_dimension_unit: Faker::Lorem.word,
-                         shipping_distance: Faker::Number.decimal(l_digits: 2),
-                         shipping_distance_unit: Faker::Lorem.word,
-                         shipping_duration: Faker::Number.decimal(l_digits: 2),
-                         featured: Faker::Boolean.boolean,
-                         best_seller: Faker::Boolean.boolean,
-                         new_arrival: Faker::Boolean.boolean,
-                         on_display: Faker::Boolean.boolean,
-                         on_sale: Faker::Boolean.boolean,
-                         on_auction: Faker::Boolean.boolean,
-                         on_rent: Faker::Boolean.boolean,
-                         on_demand: Faker::Boolean.boolean,
-                         on_pre_order: Faker::Boolean.boolean)
+                         variant_type: %i[select checkbox_group textarea checkbox radio number text file date swatch].sample,
+                         variant_select_choices: [
+                          10.times.map do
+                            {name: Faker::Lorem.word, price: Faker::Number.decimal(l_digits: 2), discount: Faker::Number.decimal(l_digits: 2)}
+                          end
+                        ],
+                        on_demand: Faker::Boolean.boolean,
+                        on_sale: Faker::Boolean.boolean,
+                        best_seller: Faker::Boolean.boolean)
+
 end
 
 Branch.all.each do |branch|

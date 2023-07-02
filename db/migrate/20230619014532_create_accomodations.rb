@@ -14,6 +14,7 @@ class CreateAccomodations < ActiveRecord::Migration[7.0]
       t.string :name
       t.float :price
       t.float :rating
+      t.float :rating_count
       t.float :latitude
       t.float :longitude
       t.json :amenities
