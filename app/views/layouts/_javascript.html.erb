@@ -1,6 +1,18 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
+    const toggle_more_variants_element = document.querySelector('.toggle_more_variants');
+    if(toggle_more_variants_element){
+      toggle_more_variants_element.addEventListener('click', function(){
+        toggle_more_variants();
+      });
+    }
   });
+
+  const toggle_more_variants = () => {
+    const element = document.querySelector('.more_variants');
+    toggleClass(element, 'd-none');
+  }
+
   function processImage(element_class, image){
     var colorThief = new ColorThief();
 

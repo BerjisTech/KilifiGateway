@@ -6,9 +6,41 @@
     <div class="p-2">
       <div class="fs-1 fw-lighter"><%= product.name.capitalize %></div>
       <div>
-        <% product.product_variants.each_with_index do |variant, index|%>
+        <% product.product_variants.limit(5).each_with_index do |variant, index|%>
           <%= render variant %>
         <% end %>
+        <% if product.product_variants.count > 5 %>
+          <div class="d-flex align-items-center justify-content-between w-full bg-white gap-2 p-2 my-1 unselectable toggle_more_variants" role="button">
+            <span class="text-green-500 px-2 py-1 rounded-full text-xs">See more</span>
+            <div class="">
+              <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="more_variants d-none">
+            <% product.product_variants.offset(5).each_with_index do |variant, index|%>
+              <%= render variant %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="d-flex flex-column align-items-start justify-content-start my-1">
+        <span class="<%= 'line-through text-red-600 text-sm' if product.discount.present? %>">$ <%= product.price %></span>
+        <span class="text-green-600 fs-3 fw-lighter">$ <%= product.discount %></span>
+      </div>
+      <div class="d-flex align-items-center justify-content-start w-[180px] bg-slate-50 hover:bg-slate-100 my-1">
+        <button class="text-gray-800 px-3 py-2 rounded-l-md h-full" id="decrement">-</button>
+        <input type="text" class="text-center border-none h-full w-[100px]" id="quantity" value="1">
+        <button class="text-gray-800 px-3 py-2 rounded-r-md h-full" id="increment">+</button>
+      </div>
+      <div class="d-flex align-items-center justify-content-start flex-column gap-2 py-2">
+        <button class="w-full bg-green-400 hover:bg-green-800 p-2 fw-bold text-white">Add To Cart</button>
+        <button class="w-full bg-slate-50 hover:bg-slate-200 p-2 fw-bold text-green-400 hover:text-green-800">Buy Now</button>
+      </div>
+      <div class="my-2">
+        <strong class="block font-medium mb-1">Description:</strong>
+        <%= product.description %>
       </div>
     </div>
   </div>
@@ -216,3 +248,16 @@
     <hr class="mt-6">
   <% end %>
 </div>
+<script>
+  var quantityInput = document.getElementById('quantity');
+
+  document.getElementById('increment').addEventListener('click', function () {
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+  });
+
+  document.getElementById('decrement').addEventListener('click', function () {
+    if(quantityInput.value > 1){
+      quantityInput.value = parseInt(quantityInput.value) - 1;
+    }
+  });
+</script>
