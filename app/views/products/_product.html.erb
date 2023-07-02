@@ -1,249 +1,215 @@
-<div id="<%= dom_id product %>">
+<div class="row w-full" id="<%= dom_id product %>">
+  <div class="col-sm-6">
+    <img src="https://picsum.com" alt="<%= product.name %>" class="w-full">
+  </div>
+  <div class="col-sm-6">
+    <div class="p-2">
+      <div class="fs-1 fw-lighter"><%= product.name.capitalize %></div>
+      <div>
+        <% product.product_variants.each_with_index do |variant, index|%>
+          <%= render variant %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="display: none">
   <p class="my-5">
     <strong class="block font-medium mb-1">Store:</strong>
     <%= product.store_id %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Branch:</strong>
     <%= product.branch_id %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
     <%= product.name %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Description:</strong>
     <%= product.description %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Product type:</strong>
     <%= product.product_type %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Product category:</strong>
     <%= product.product_category %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Product sub category:</strong>
     <%= product.product_sub_category %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Color:</strong>
     <%= product.color %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Size:</strong>
     <%= product.size %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Weight:</strong>
     <%= product.weight %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Weight unit:</strong>
     <%= product.weight_unit %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Dimension:</strong>
     <%= product.dimension %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Dimension unit:</strong>
     <%= product.dimension_unit %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Sku:</strong>
     <%= product.sku %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Barcode:</strong>
     <%= product.barcode %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Manufacturer:</strong>
     <%= product.manufacturer %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Brand:</strong>
     <%= product.brand %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Model:</strong>
     <%= product.model %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Origin:</strong>
     <%= product.origin %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Condition:</strong>
     <%= product.condition %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Condition note:</strong>
     <%= product.condition_note %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Warranty:</strong>
     <%= product.warranty %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Warranty period:</strong>
     <%= product.warranty_period %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Warranty policy:</strong>
     <%= product.warranty_policy %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Return policy:</strong>
     <%= product.return_policy %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Return period:</strong>
     <%= product.return_period %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Price:</strong>
     <%= product.price %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Discount:</strong>
     <%= product.discount %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Tax:</strong>
     <%= product.tax %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Shipping fee:</strong>
     <%= product.shipping_fee %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Shipping discount:</strong>
     <%= product.shipping_discount %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Shipping discount price:</strong>
     <%= product.shipping_discount_price %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Shipping tax:</strong>
     <%= product.shipping_tax %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Shipping weight:</strong>
     <%= product.shipping_weight %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Shipping weight unit:</strong>
     <%= product.shipping_weight_unit %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Shipping dimension:</strong>
     <%= product.shipping_dimension %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Shipping dimension unit:</strong>
     <%= product.shipping_dimension_unit %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Shipping distance:</strong>
     <%= product.shipping_distance %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Shipping distance unit:</strong>
     <%= product.shipping_distance_unit %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Shipping duration:</strong>
     <%= product.shipping_duration %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Featured:</strong>
     <%= product.featured %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">Best seller:</strong>
     <%= product.best_seller %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">New arrival:</strong>
     <%= product.new_arrival %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">On display:</strong>
     <%= product.on_display %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">On sale:</strong>
     <%= product.on_sale %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">On auction:</strong>
     <%= product.on_auction %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">On rent:</strong>
     <%= product.on_rent %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">On demand:</strong>
     <%= product.on_demand %>
   </p>
-
   <p class="my-5">
     <strong class="block font-medium mb-1">On pre order:</strong>
     <%= product.on_pre_order %>
   </p>
-
   <% if action_name != "show" %>
     <%= link_to "Show this product", product, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this product', edit_product_path(product), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>

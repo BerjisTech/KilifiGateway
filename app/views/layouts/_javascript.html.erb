@@ -41,6 +41,21 @@
         document.head.appendChild(style);
     };
   }
+  const toggleClass = (element, className) => {
+    if (element.classList) {
+        element.classList.toggle(className);
+    } else {
+        // For IE10 or older versions
+        var classes = element.className.split(" ");
+        var i = classes.indexOf(className);
+
+        if (i >= 0)
+            classes.splice(i, 1);
+        else
+            classes.push(className);
+            element.className = classes.join(" ");
+    }
+  }
 </script>
 <% if !is_devise_component && !is_control_room_component %>
   <% if flash.any? %>
