@@ -1,4 +1,35 @@
-<div>
-  <h1 class="font-bold text-4xl">OperationsRoom#stores</h1>
-  <p>Find me in app/views/operations_room/stores.html.erb</p>
+<div class="p-2 w-full">
+  <div class="my-2 d-flex align-items-center justify-content-start">
+    <div class="flex-fill"></div>
+    <div class="form-floating w-[300px]">
+      <input type="search" placeholder="Search" name="or_search_stores" class="form-control">
+      <label for="search">Search your stores</label>
+    </div>
+  </div>
+  <div>
+    <table class="table table-condensed table-hover table-striped table-fixed table-responsive">
+      <thead>
+        <tr>
+          <th>Store</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stores.map do |store| %>
+          <tr>
+            <td><%= store.name %></td>
+            <td>
+              <%= link_to "visibility", store_path(store), class: "material-icons" %>
+              <%= link_to "edit", edit_store_path(store), class: "material-icons text-red-500 hover:text-red-800" %>
+              <%= link_to "delete", store_path(store), method: :delete, class: "material-icons text-red-500 hover:text-red-800" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
+  <div class="my-2 d-flex align-items-center justify-content-start">
+    <%= paginate @stores %>
+  </div>
 </div>

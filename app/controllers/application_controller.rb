@@ -26,7 +26,8 @@ class ApplicationController < ActionController::Base
   }.freeze
 
   SKIP_COMMAND_CENTER_ACTIONS = %w[create_default_guest_user set_static_arrays method_arrays data_count
-                                   has_parent has_children setup_command_center_links ignore_suggester].freeze
+                                   has_parent has_children setup_command_center_links ignore_suggester
+                                   setup_command_center].freeze
 
   SKIP_ACTIONS_WITHOUT_OWNER = %w[owners stores branches staffs products services].freeze
   SKIP_ACTIONS_WITHOUT_PROPERTY = %w[property].freeze
@@ -67,33 +68,33 @@ class ApplicationController < ActionController::Base
         has_children: has_children(action),
         has_parent: has_parent(action),
         parent: ACTION_FAMILY[action],
-        data_count: data_count(action, owner),
+        data_count: data_count(action, owner, service_provider),
         get_started_link: "#{root_url}#{action}/new",
         debug: "Action: #{action}, Icon: #{ACTION_ICONS[action]}"
       )
     end
 
-    @owner = Owner.where(user_id: user.id).first
-    @service_provider = ServiceProvider.where(user_id: user.id).first
-    @staff = Staff.where(user_id: user.id).first
+    @owner = owner
+    @service_provider = service_provider
+    @staff = staff
   end
 
-  def data_count(action, _owner)
+  def data_count(action, owner, service_provider)
     case action
     when 'stores'
-      current_user.stores.count
+      owner.stores.count
     when 'branches'
-      current_user.branches.count
+      owner.branches.count
     when 'products'
-      current_user.products.count
+      owner.products.count
     when 'services'
-      current_user.services.count
+      owner.services.count
     when 'on_demand_services'
-      current_user.on_demand_services.count
+      service_provider.on_demand_services.count
     when 'staffs'
-      current_user.staffs.count
+      owner.staffs.count
     when 'property'
-      current_user.accomodations.count
+      owner.accomodations.count
     end
   end
 

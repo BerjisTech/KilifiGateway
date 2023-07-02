@@ -88,3 +88,5 @@ gem 'faker', '~> 3.2'
 gem 'omniauth-google-oauth2', '~> 1.1'
 
 gem 'omniauth', '~> 2.1'
+
+gem "kaminari", "~> 1.2"

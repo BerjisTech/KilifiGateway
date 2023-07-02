@@ -2,12 +2,19 @@
 
 class OperationsRoomController < ApplicationController
   before_action :authenticate_user!
+  before_action :setup_command_center, only: %i[command_center property stores branches staffs products services on_demand_services treasury support]
+
+  def setup_command_center
+  end
 
   def command_center; end
 
   def property; end
 
-  def stores; end
+  def stores
+    page = params[:page] || 1
+    @stores = @owner.stores.page(page).per(10)
+  end
 
   def branches; end
 
