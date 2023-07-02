@@ -8,11 +8,11 @@
       <div class="flex-fill">
         <% case product_variant.variant_type %>
         <% when 'select' %>
-        <%= select_tag 'product_variant', options_for_select(variant_choices.map { |choice| [choice["name"], choice.to_json] }) %>
+        <%= select_tag 'product_variant', options_for_select(variant_choices.map { |choice| [choice["name"], choice["name"]] }) %>
         <% when 'checkbox_group' %>
         <% variant_choices.each do |choice| %>
-          <%= check_box_tag 'product_variant[]', choice, false, id: choice[:name] %>
-          <%= label_tag choice[:name] %>
+          <%= check_box_tag 'product_variant[]', choice['name'], false, id: choice["name"] %>
+          <%= label_tag choice["name"] %>
         <% end %>
         <% when 'textarea' %>
         <%= text_area_tag 'product_variant' %>
@@ -20,8 +20,8 @@
         <%= check_box_tag 'product_variant' %>
         <% when 'radio' %>
         <% variant_choices.each do |choice| %>
-          <%= radio_button_tag 'product_variant', choice, false, id: choice[:name] %>
-          <%= label_tag choice[:name] %>
+          <%= radio_button_tag 'product_variant', choice['name'], false, id: choice['name'] %>
+          <%= label_tag choice['name'] %>
         <% end %>
         <% when 'number' %>
         <%= number_field_tag 'product_variant' %>

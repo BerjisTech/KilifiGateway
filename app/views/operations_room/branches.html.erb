@@ -1,4 +1,35 @@
-<div>
-  <h1 class="font-bold text-4xl">OperationsRoom#branches</h1>
-  <p>Find me in app/views/operations_room/branches.html.erb</p>
+<div class="p-2 w-full">
+  <div class="my-2 d-flex align-items-center justify-content-start">
+    <div class="flex-fill"></div>
+    <div class="form-floating w-[300px]">
+      <input type="search" placeholder="Search" name="or_search_branches" class="form-control">
+      <label for="search">Search your branches</label>
+    </div>
+  </div>
+  <div>
+    <table class="table table-condensed table-hover table-striped table-fixed table-responsive">
+      <thead>
+        <tr>
+          <th>Branch</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @branches.map do |branch| %>
+          <tr>
+            <td><%= branch.name %></td>
+            <td>
+              <%= link_to "visibility", branch_path(branch), class: "material-icons" %>
+              <%= link_to "edit", edit_branch_path(branch), class: "material-icons text-red-500 hover:text-red-800" %>
+              <%= link_to "delete", branch_path(branch), method: :delete, class: "material-icons text-red-500 hover:text-red-800" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
+  <div class="my-2 d-flex align-items-center justify-content-start">
+    <%= paginate @branches %>
+  </div>
 </div>

@@ -1,4 +1,35 @@
-<div>
-  <h1 class="font-bold text-4xl">OperationsRoom#property</h1>
-  <p>Find me in app/views/operations_room/property.html.erb</p>
+<div class="p-2 w-full">
+  <div class="my-2 d-flex align-items-center justify-content-start">
+    <div class="flex-fill"></div>
+    <div class="form-floating w-[300px]">
+      <input type="search" placeholder="Search" name="or_search_propertys" class="form-control">
+      <label for="search">Search your properties</label>
+    </div>
+  </div>
+  <div>
+    <table class="table table-condensed table-hover table-striped table-fixed table-responsive">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @properties.map do |property| %>
+          <tr>
+            <td><%= property.name %></td>
+            <td>
+              <%= link_to "visibility", property_path(property), class: "material-icons" %>
+              <%= link_to "edit", edit_property_path(property), class: "material-icons text-red-500 hover:text-red-800" %>
+              <%= link_to "delete", property_path(property), method: :delete, class: "material-icons text-red-500 hover:text-red-800" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
+  <div class="my-2 d-flex align-items-center justify-content-start">
+    <%= paginate @properties %>
+  </div>
 </div>

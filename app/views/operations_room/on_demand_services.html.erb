@@ -1,4 +1,35 @@
-<div>
-  <h1 class="font-bold text-4xl">OperationsRoom#on_demand_services</h1>
-  <p>Find me in app/views/operations_room/on_demand_services.html.erb</p>
+<div class="p-2 w-full">
+  <div class="my-2 d-flex align-items-center justify-content-start">
+    <div class="flex-fill"></div>
+    <div class="form-floating w-[300px]">
+      <input type="search" placeholder="Search" name="or_search_on_demand_services" class="form-control">
+      <label for="search">Search your on_demand_services</label>
+    </div>
+  </div>
+  <div>
+    <table class="table table-condensed table-hover table-striped table-fixed table-responsive">
+      <thead>
+        <tr>
+          <th>on_demand_service</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @on_demand_services.map do |on_demand_service| %>
+          <tr>
+            <td><%= on_demand_service.name %></td>
+            <td>
+              <%= link_to "visibility", on_demand_service_path(on_demand_service), class: "material-icons" %>
+              <%= link_to "edit", edit_on_demand_service_path(on_demand_service), class: "material-icons text-red-500 hover:text-red-800" %>
+              <%= link_to "delete", on_demand_service_path(on_demand_service), method: :delete, class: "material-icons text-red-500 hover:text-red-800" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot></tfoot>
+    </table>
+  </div>
+  <div class="my-2 d-flex align-items-center justify-content-start">
+    <%= paginate @on_demand_services %>
+  </div>
 </div>

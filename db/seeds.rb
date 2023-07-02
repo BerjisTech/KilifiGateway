@@ -158,20 +158,23 @@ Branch.all.each do |branch|
 end
 
 Product.all.each do |product|
-  ProductVariant.create!(product:,
-                         name: Faker::Lorem.word,
-                         price: Faker::Number.decimal(l_digits: 2),
-                         discount: Faker::Number.decimal(l_digits: 2),
-                         variant_type: %i[select checkbox_group textarea checkbox radio number text file date swatch].sample,
-                         variant_select_choices: [
-                          10.times.map do
-                            {name: Faker::Lorem.word, price: Faker::Number.decimal(l_digits: 2), discount: Faker::Number.decimal(l_digits: 2)}
-                          end
-                        ],
-                        on_demand: Faker::Boolean.boolean,
-                        on_sale: Faker::Boolean.boolean,
-                        best_seller: Faker::Boolean.boolean)
-
+  5.times do
+    ProductVariant.create!(product:,
+                           name: Faker::Lorem.word,
+                           price: Faker::Number.decimal(l_digits: 2),
+                           discount: Faker::Number.decimal(l_digits: 2),
+                           variant_type: %i[select checkbox_group textarea checkbox radio number text file date
+                                            swatch].sample,
+                           variant_select_choices: [
+                             10.times.map do
+                               { name: Faker::Lorem.word, price: Faker::Number.decimal(l_digits: 2),
+                                 discount: Faker::Number.decimal(l_digits: 2) }
+                             end
+                           ],
+                           on_demand: Faker::Boolean.boolean,
+                           on_sale: Faker::Boolean.boolean,
+                           best_seller: Faker::Boolean.boolean)
+  end
 end
 
 Branch.all.each do |branch|
