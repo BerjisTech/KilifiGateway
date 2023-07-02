@@ -3,7 +3,7 @@
     <div class="flex-fill d-flex align-items-center justify-content-start gap-2">
       <input id="<%= product_variant %>" name="<%= product_variant %>" type="checkbox" />
       <label for="<%= product_variant %>">
-        <span class="fw-bold"><%= product_variant.name %></span>
+        <span class="fw-bold"><%= product_variant.name.capitalize %></span>
       </label>
     </div>
     <div class="flex-fill d-flex align-items-center justify-content-between w-full bg-white gap-2 p-2" role="button" onclick="toggleClass(document.querySelector(`#<%= dom_id product_variant %> .details`), 'hidden')">
