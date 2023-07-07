@@ -1,6 +1,6 @@
 <div class="block w-full h-screen bg-no-repeat bg-cover bg-opacity-20 bg-center bg-fixed bg-hero-pattern d-flex align-items-start justify-content-center gap-3 flex-column">
   <div class="text-[70px] fw-bolder text-slate-800 backdrop-blur-xl px-4">All Your Needs In One Place</div>
-  <%= form_with(model: Search.new, class: "min-w-[50%] contents d-flex align-items-center justify-content-start bg-green-400 backdrop-blur-xl") do |form| %>
+  <%= form_with(model: Search.new, class: "min-w-[50%] contents d-flex align-items-center justify-content-start bg-blue-400 backdrop-blur-xl") do |form| %>
     <%= form.hidden_field :location, value: request.original_url %>
     <%= form.hidden_field :referer, value: request.referer %>
     <div class="form-floating my-3 flex-fill">
@@ -11,7 +11,7 @@
       <%= form.select :category, @search_categories, {}, class: "rounded-none bg-transparent border-0 form-select", 'aria-label': 'Service Category' %>
       <%= form.label :category, 'Service Category', class: 'bg-transparent' %>
     </div>
-    <div class="inline bg-green-800 h-full d-flex align-items-center justify-content-center">
+    <div class="inline bg-blue-800 h-full d-flex align-items-center justify-content-center">
       <%= form.button class: "rounded-lg py-3 px-5 bg-transparent text-white text-decoration-none inline-block font-medium text-decoration-none cursor-pointer" do %>
         <i class="material-icons fs-1">search</i>
       <% end %>
