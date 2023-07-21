@@ -1,7 +1,7 @@
   
 <div class="sticky fs-4 px-4 d-flex align-items-center justify-content-center w-full flex-wrap py-2 bg-slate-300">
   <span>Kilifi Gateway</span>
-  <div class="fw-light text-green-800 flex-fill d-flex align-items-center justify-content-start mx-3 p-2 bg-slate-100 rounded-md gap-3">
+  <div class="fw-light text-blue-800 flex-fill d-flex align-items-center justify-content-start mx-3 p-2 bg-slate-100 rounded-md gap-3">
     <%= link_to "Home", root_path, class: "text-decoration-none"%>
     <%= link_to "Accomodation", accomodations_path, class: "text-decoration-none"%>
     <%= link_to "Shopping", stores_path, class: "text-decoration-none #{ controller_name }"%>
@@ -11,11 +11,11 @@
   <div>
     <% if user_signed_in? %>
       <div class="d-flex gap-2 align-items-center justify-content-center">
-        <%= link_to "Account", operations_center_path, class: "text-decoration-none bg-slate-100 text-green-800 fw-bold py-2 px-3"%>
-        <%= button_to 'logout', destroy_user_session_path, method: :delete, class: "material-icons text-decoration-none bg-slate-100 text-green-800 fw-bold py-2 px-3" %>
+        <%= link_to "Account", operations_center_path, class: "text-decoration-none bg-slate-100 text-blue-800 fw-bold py-2 px-3"%>
+        <%= button_to 'logout', destroy_user_session_path, method: :delete, class: "material-icons text-decoration-none bg-slate-100 text-blue-800 fw-bold py-2 px-3" %>
       </div>
     <% else %>
-      <%= link_to "Login", new_user_session_path, class: "text-decoration-none bg-slate-100 text-green-800 fw-bold py-2 px-3"%>
+      <%= link_to "Login", new_user_session_path, class: "text-decoration-none bg-slate-100 text-blue-800 fw-bold py-2 px-3"%>
     <% end %>
   </div>
 </div>

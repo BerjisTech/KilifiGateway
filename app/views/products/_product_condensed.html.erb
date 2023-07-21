@@ -20,7 +20,7 @@
     <div class="d-flex align-items-center justify-content-center gap-2 mt-2">
       <div class="d-flex flex-column align-items-start justify-content-start">
         <span class="<%= 'line-through text-red-600 text-sm' if product.discount.present? %>">$ <%= product.price %></span>
-        <span class="text-green-600 fw-bold">$ <%= product.discount %></span>
+        <span class="text-blue-600 fw-bold">$ <%= product.discount %></span>
       </div>
       <% if product.product_variants.blank? %>
         <span class="position-relative flex-fill rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium d-flex align-items-center justify-content-center text-decoration-none">

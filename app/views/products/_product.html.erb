@@ -11,9 +11,9 @@
         <% end %>
         <% if product.product_variants.count > 5 %>
           <div class="d-flex align-items-center justify-content-between w-full bg-white gap-2 p-2 my-1 unselectable toggle_more_variants" role="button">
-            <span class="text-green-500 px-2 py-1 rounded-full text-xs">See more</span>
+            <span class="text-blue-500 px-2 py-1 rounded-full text-xs">See more</span>
             <div class="">
-              <svg class="h-6 w-6 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg class="h-6 w-6 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </div>
@@ -27,7 +27,7 @@
       </div>
       <div class="d-flex flex-column align-items-start justify-content-start my-1">
         <span class="<%= 'line-through text-red-600 text-sm' if product.discount.present? %>">$ <%= product.price %></span>
-        <span class="text-green-600 fs-3 fw-lighter">$ <%= product.discount %></span>
+        <span class="text-blue-600 fs-3 fw-lighter">$ <%= product.discount %></span>
       </div>
       <div class="d-flex align-items-center justify-content-start w-[180px] bg-slate-50 hover:bg-slate-100 my-1">
         <button class="text-gray-800 px-3 py-2 rounded-l-md h-full" id="decrement">-</button>
@@ -35,8 +35,8 @@
         <button class="text-gray-800 px-3 py-2 rounded-r-md h-full" id="increment">+</button>
       </div>
       <div class="d-flex align-items-center justify-content-start flex-column gap-2 py-2">
-        <button class="w-full bg-green-400 hover:bg-green-800 p-2 fw-bold text-white">Add To Cart</button>
-        <button class="w-full bg-slate-50 hover:bg-slate-200 p-2 fw-bold text-green-400 hover:text-green-800">Buy Now</button>
+        <button class="w-full bg-blue-400 hover:bg-blue-800 p-2 fw-bold text-white">Add To Cart</button>
+        <button class="w-full bg-slate-50 hover:bg-slate-200 p-2 fw-bold text-blue-400 hover:text-blue-800">Buy Now</button>
       </div>
       <div class="my-2">
         <strong class="block font-medium mb-1">Description</strong>

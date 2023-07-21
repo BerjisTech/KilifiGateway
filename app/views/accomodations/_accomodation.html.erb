@@ -21,13 +21,13 @@
       <div class="d-flex w-full flex-column gap-2">
         <% if action_name != "show" %>
           <div class="d-flex w-full">
-            <%= link_to 'visibility', accomodation, class: "text-green-600 material-icons flex-fill text-decoration-none text-center rounded-lg py-3 px-5 bg-gray-100" %>
-            <%= link_to 'edit', edit_accomodation_path(accomodation), class: "text-green-600 material-icons text-center text-decoration-none rounded-lg py-3 ml-2 px-5 bg-gray-100" %>
+            <%= link_to 'visibility', accomodation, class: "text-blue-600 material-icons flex-fill text-decoration-none text-center rounded-lg py-3 px-5 bg-gray-100" %>
+            <%= link_to 'edit', edit_accomodation_path(accomodation), class: "text-blue-600 material-icons text-center text-decoration-none rounded-lg py-3 ml-2 px-5 bg-gray-100" %>
           </div>
         <% end %>
         <div class="fw-bold fs-3"><%= accomodation.name.capitalize %></div>
         <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md">
-          <div class="fw-bold fw-bold text-green-600"><%= ((accomodation.rating/accomodation.rating_count)*100).clamp(0,5) %></div>
+          <div class="fw-bold fw-bold text-blue-600"><%= ((accomodation.rating/accomodation.rating_count)*100).clamp(0,5) %></div>
           <div class="d-flex flex-column flex-fill text-[12px]">
             <div>Pleasant</div>
             <div><%= accomodation.rating_count %> REVIEWS</div>
@@ -72,7 +72,7 @@
         </div>
         <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md"></div>
         <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md"></div>
-        <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md fw-bold text-[12px] text-green-600">
+        <div class="d-flex align-items-center justify-content-start gap-2 border-solid border-1 bg-slate-100 p-2 rounded-md fw-bold text-[12px] text-blue-600">
           <div class="d-flex align-items-center justify-content-start flex-fill flex-column">
             <span class="material-icons">reviews</span>
             <span>REVIEWS</span>

@@ -38,18 +38,18 @@ button {
 }
 a {
   text-decoration: none !important;
-  color: #166534 !important;
+  color: #1E40AF !important;
   &:hover,
   &:focus,
   &:active {
-    color: #2cbe64 !important;
+    color: #3B82F6 !important;
   }
 }
 
 /* This will affect the entire document */
 html {
   scrollbar-width: thin; /* for Firefox */
-  scrollbar-color: #166534 #fff; /* for Firefox */
+  scrollbar-color: #1E40AF #fff; /* for Firefox */
 }
 
 /* For Chrome, Safari and Edge */
@@ -62,11 +62,11 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #166534; /* Adjust thumb color */
+  background: #1E40AF; /* Adjust thumb color */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #166534; /* Adjust thumb hover color */
+  background: #3B82F6; /* Adjust thumb hover color */
 }
 
 .unselectable {
